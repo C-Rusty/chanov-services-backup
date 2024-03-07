@@ -1,0 +1,55 @@
+@mixin PTSans-38px {
+    font-family: "PT Sans";
+    font-size: 3.8rem;
+}
+
+@mixin PTSans-32px {
+    font-family: "PT Sans";
+    font-size: 3.2rem;
+}
+
+@mixin PTSans-24px-Bold {
+    font-family: "PT Sans";
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+@mixin PTSans-24px {
+    font-family: "PT Sans";
+    font-size: 2.4rem;
+    font-weight: 400;
+}
+
+@mixin PTSans-22px {
+    font-family: "PT Sans";
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+@mixin PTSans-20px {
+    font-family: "PT Sans";
+    font-size: 2rem;
+}
+
+@mixin PTSans-20px-Bold {
+    font-family: "PT Sans";
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+@mixin PTSans-18px {
+    font-family: "PT Sans";
+    font-size: 1.8rem;
+}
+
+@mixin PTSans-18px-Bold {
+    font-family: "PT Sans";
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+@mixin PTSans-14px-Bold {
+    font-family: "PT Sans";
+    font-size: 1.4rem;
+    font-weight: 700;
+}

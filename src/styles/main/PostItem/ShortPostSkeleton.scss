@@ -1,0 +1,37 @@
+@import './ShortPost.scss';
+@import '../../global/mixins.scss';
+
+@mixin background-gradient {
+  background: linear-gradient(90deg, $gray-primary 0px, $gray-primary-light 40px, $gray-primary 80px); 
+  background-size: 400px 250px, 315px 180px, 100px 100px, 225px 30px;
+  background-position: -400px 0, 0 0, 0px 190px, 50px 195px;
+}
+
+@keyframes loading {
+    100% {
+        background-position: 400px 0, 0 0, 0 190px, 50px 195px;
+    }
+}
+
+@include shortPost;
+
+.post-skeleton {
+    h2, .categories > h3, .post-short__img {
+        @include background-gradient;
+        animation: loading 2.5s infinite linear;
+    }
+
+    .post-short__info {
+        width: 100%;
+
+        .categories > h3 {
+            min-width: 10rem;
+            min-height: 3rem;
+        }
+
+        h2 {
+            min-width: 100%;
+            min-height: 5rem;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+@import '../../global/mixins.scss';
+
+@mixin background-gradient {
+    background: linear-gradient(90deg, $gray-primary 0px, $gray-primary-light 40px, $gray-primary 80px); 
+    background-size: 4000px 250px, 315px 180px, 100px 100px, 225px 30px;
+    background-position: -4000px 0, 0 0, 0px 190px, 50px 195px;
+  }
+  
+  @keyframes loading {
+      100% {
+          background-position: 4000px 0, 0 0, 0 190px, 50px 195px;
+      }
+  }
+
+.loading-page {
+    min-height: calc(100vh - 10.1rem);
+    background-color: $gray-primary;
+
+    @include background-gradient;
+    animation: loading 5s infinite linear;
+}

@@ -1,0 +1,59 @@
+@import '../../global/mixins.scss';
+
+@mixin svg-white {
+    svg path {
+        fill: $tertiary; 
+    }
+}
+
+.lang-switcher {
+    .form {
+        .select, svg path {
+            transition: all .5s;
+        }
+        
+        .select {
+            color: $gray-secondary-light-ultra;
+            font-weight: 700;
+
+            .MuiSelect-select {
+                padding: 0 .8rem 0 0;
+                width: auto;
+            }           
+        }
+    }
+
+    &:hover {
+        .select, svg path {
+            transition: all .5s;
+        }
+
+        .select {
+            color: $tertiary;
+        }
+
+        @include svg-white;
+    }
+}
+
+.select-active {
+    @include svg-white;
+    color: $tertiary !important;
+}
+
+
+.css-6hp17o-MuiList-root-MuiMenu-list {
+    padding: 0 !important;
+}
+
+html[lang=ru] {
+    .ru {
+        display: none;
+    }
+}
+
+html[lang=en] {
+    .en {
+        display: none;
+    }
+}

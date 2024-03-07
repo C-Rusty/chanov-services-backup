@@ -1,0 +1,43 @@
+@import '../../global/mixins.scss';
+
+@mixin filtersBarStyles {
+    &__types, &__categories {
+        span {
+            @include PTSans-24px;
+            font-weight: 700;
+            color: $gray-secondary-hovered;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            row-gap: 2.4rem;
+
+            margin-top: 3.2rem;
+
+            list-style-type: none;
+
+            li {
+                @include PTSans-20px;
+                color: $gray-secondary-hovered;
+
+                transition: all .5s;
+                scale: 1;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .active-type-tag, .active-category-tag {
+                font-weight: 700;
+                transition: all .5s;
+                scale: 1.05;
+            }
+        }
+    }
+
+    &__types {
+        margin-bottom: 6.4rem;
+    }
+}

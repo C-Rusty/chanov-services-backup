@@ -1,0 +1,249 @@
+@import '../global/mixins.scss';
+@import '../global/fonts-mixins/GeorgiaMix.scss';
+
+footer {
+    background: $gray-primary;
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        border-top: 1px solid $gray-secondary-light-ultra;
+
+        @media screen and (max-width: 1150px) {
+            flex-direction: column;
+            padding: 0;
+        }
+        
+
+        .contacts, .authors, .legal {
+            display: flex;
+            align-items: center;
+
+            width: 50%;
+
+            padding: .7rem 0;
+
+            @media screen and (max-width:1150px) {
+                width: 100%;
+                padding: 0;
+            }
+
+            &__email, &__author, &__icons, &__link {
+                @media screen and (max-width: 1150px) {
+                    padding: 2.5rem 5.6rem;
+                }
+                @media screen and (max-width: 575px) {
+                    padding: 2.5rem 2.4rem;
+                }
+            }
+        }
+
+        .legal {
+            a {
+                @include Georgia-18px;
+                color: $gray-secondary-light-ultra;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                @media screen and (max-width: 425px) {
+                    font-size: 1.6rem;
+                }
+            }
+        }
+
+        .contacts {
+            justify-content: space-between;
+
+            padding-right: 5.5rem;
+            border-right: 1px solid $gray-secondary-light-ultra;
+
+            @media screen and (max-width: 1150px) {
+                border-bottom: 1px solid $gray-secondary-light-ultra;
+                border-right: none;
+                padding-right: 0;
+            }
+            @media screen and (max-width: 575px) {
+                justify-content: normal;
+            }
+
+            &__email {
+                &:hover {
+                    cursor: pointer;
+                }
+                
+                @media screen and (max-width:1150px) {
+                    width: 50%;   
+                    border-right: 1px solid $gray-secondary-light-ultra;
+                }
+                @media screen and (max-width: 575px) {
+                    width: max-content;
+                }
+
+                a {
+                    @include Georgia-18px;
+                    text-decoration: none;
+                    color: $gray-secondary-light-ultra;
+
+                    @media screen and (max-width: 425px) {
+                        font-size: 1.6rem;
+                    }
+                }
+            }
+
+            &__icons {
+                display: flex;
+                column-gap: 2.4rem;
+
+                @media screen and (max-width: 575px) {
+                    column-gap: 2.1rem;
+                    justify-content: space-evenly;
+                    width: 100%;
+                    padding-right: 1.7rem;
+                }
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    
+
+                    svg {
+                        width: 2.4rem;
+                        height: 2.4rem;
+
+                        path, circle {
+                            transition: all .3s;
+                        }
+    
+                        &:hover {
+                            path, circle {
+                                transition: all .3s;
+                            }
+                        }
+                    }
+                }
+
+                a:first-child {
+                    &:hover {
+                        svg {
+                            path:first-child {
+                                fill: white;
+                            }
+    
+                            path {
+                                fill: #7360F2;
+                            }
+                        }
+                    }
+                }
+    
+                a:nth-child(2) {
+                    &:hover {
+                        svg {
+                            path:first-child {
+                                fill: #24A1DE;
+                            }
+    
+                            path {
+                                fill: white;
+                            }
+                        }
+                    }
+                }
+                
+                a:last-child {
+                    &:hover {
+                        svg {
+                            circle {
+                                fill: white;
+                            }
+                            path {
+                                fill: #25D366;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .authors {
+            display: flex;
+            justify-content: space-between;
+
+            padding-left: 5.6rem;
+
+            @media screen and (max-width: 1150px) {
+                padding-left: 0;
+            }
+            @media screen and (max-width: 575px) {
+                flex-direction: column;
+            }
+
+            &__author {
+                display: flex;
+                column-gap: .5rem;
+
+                @media screen and (max-width: 1150px) {
+                    flex-direction: column;
+                    column-gap: 0;
+                    row-gap: .5rem;
+                }
+                @media screen and (max-width: 575px) {
+                    min-width: 100%;
+                    flex-direction: row;
+                    row-gap: 0;
+                    column-gap: 1rem;
+                }
+
+                span, a {
+                    @include Georgia-18px;
+
+                    @media screen and (max-width: 425px) {
+                        font-size: 1.6rem;
+                    }
+                }
+    
+                span {
+                    color: $gray-secondary-light-ultra;
+                }
+    
+                a {
+                    color: $gray-secondary-light;
+                    text-decoration: underline;
+                }
+            }
+
+            &__author:first-child {
+                @media screen and (max-width: 1150px) {
+                    min-width: 50%;
+                    border-right: 1px solid $gray-secondary-light-ultra;
+                }
+                @media screen and (max-width: 575px) {
+                    min-width: 100%;
+                    border-right: none;
+                    border-bottom: 1px solid $gray-secondary-light-ultra;
+                }
+            }
+        }
+
+        .alone {
+            display: flex;
+            width: 100%;
+
+            padding-left: 0;
+
+            .authors__author {
+                flex-direction: row;
+
+                @media screen and (max-width: 768px) {
+                    flex-direction: column;
+                }
+                @media screen and (max-width: 575px) {
+                    padding: 1.6rem 2.4rem;
+                }
+            }
+        } 
+    }
+}

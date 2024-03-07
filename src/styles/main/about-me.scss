@@ -1,0 +1,923 @@
+@import '../global/mixins.scss';
+@import '../global/fonts-mixins/MerriweatherMix.scss';
+@import '../global/fonts-mixins/GeorgiaMix.scss';
+
+@mixin quotes-padding {
+    padding: 14.5rem 24rem;
+
+    @media screen and (max-width: 3000px) {
+        padding: 14.5rem 20%;
+    }
+    @media screen and (max-width: 2500px) {
+        padding: 14.5rem 15%;
+    }
+    @media screen and (max-width: 2000px) {
+        padding: 14.5rem 10%;
+    }
+    @media screen and (max-width: 1200px) {
+        padding: 14.5rem 5.6rem;
+    }
+    @media screen and (max-width: 768px) {
+        padding: 4.8rem 5.6rem;
+    }
+    @media screen and (max-width: 575px) {
+        padding: 4.8rem 2.4rem;
+    }
+}
+
+@mixin headline {
+    @include Merriweather-38px;
+    font-weight: 700;
+    color: $black-secondary;
+
+    @media screen and (max-width: 768px) {
+        text-align: center;
+    }
+    @media screen and (max-width: 425px) {
+        @include headlineMobile-34px;
+    }
+}
+
+.intro {
+    background: $gray-primary;
+
+    padding-top: 8rem;
+
+    @media screen and (max-width: 425px) {
+        padding-top: 4.8rem;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @media screen and (max-width: 991px) {
+            flex-direction: column-reverse;
+        }
+
+        .img-container {
+            @media screen and (max-width: 991px) {
+                margin-bottom: 4.8rem;
+                width: 100%;
+            }
+
+            img {
+                @media screen and (max-width: 991px) {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        .text {
+            padding: 9.5rem 0;
+
+            @media screen and (max-width: 991px) {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                padding: 0;
+            }
+
+            &__headline {
+                margin-bottom: 4.8rem;
+
+                @media screen and (max-width: 425px) {
+                    margin-bottom: 3.2rem;
+                }
+
+                h1 {
+                    @include Merriweather-32px;
+                    color: $black-secondary;
+
+                    @media screen and (max-width: 425px) {
+                        @include headlineMobile-30px;
+                    }
+                }
+                
+                .underline {
+                    width: 8.5rem;
+                    height: .15rem;
+
+                    stroke-width: 2px;
+                    background: $black-secondary;
+                }
+            }
+
+            &__supporting-headline {
+                @include headline;
+
+                max-width: 85%;
+                margin-bottom: 3.2rem;
+
+                @media screen and (max-width: 991px) {
+                    max-width: 100%;
+                }
+
+                @media screen and (max-width: 575px) {
+                    margin-bottom: 2.4rem;
+                }
+            }
+
+            &__description-headline {
+                @include Georgia-20px;
+                font-weight: 400;
+                color: $gray-secondary-light;
+
+                max-width: 93%;
+
+                margin-bottom: 7.2rem;
+
+                @media screen and (max-width: 991px) {
+                    max-width: 100%;
+                    margin-bottom: 4.8rem;
+                }
+                @media screen and (max-width: 425px) {
+                    @include textMobile-16px;
+                    text-align: center;
+                    margin-bottom: 3.2rem;
+                }
+                
+            }
+
+            @media screen and (max-width: 991px) {
+                .desktop-btn {
+                    display: none
+                }
+            }
+        }
+
+        .mobile-btn {
+            min-width: 100%;
+            @media screen and (min-width: 991px) {
+                display: none
+            }
+        }
+
+        a {
+            @include button;
+        }
+    }    
+}
+
+.digits {
+    background: $gray-primary;
+
+    .container {
+
+        .headline {
+            display: flex;
+            justify-content: center;
+
+            margin-bottom: 4.8rem;
+
+            @include headline;
+
+            @media screen and (max-width: 425px) {
+                margin-bottom: 4rem;
+            }
+        }
+
+        .cards {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            text-align: center;
+
+            column-gap: 1.6rem;
+
+            @media screen and (max-width: 1150px) {
+                flex-wrap: wrap;
+                row-gap: 7rem;
+            }
+            @media screen and (max-width: 768px) {
+                flex-direction: column;
+                row-gap: 4rem;
+            }
+            @media screen and (max-width: 425px) {
+                row-gap: 3.2rem;
+            }
+
+            &__card {
+                width: 32rem;
+                height: 32rem;
+                
+                padding: 3.2rem;
+                border-radius: 16px;
+                background: $gray-primary-light;
+
+                box-shadow: 0px 4px 100px 0px rgba(0, 0, 0, 0.10);
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                @media screen and (max-width: 1450px) {
+                    width: 26rem;
+                    padding: 1.2rem;
+                }
+                @media screen and (max-width: 1150px) {
+                    width: 45%;
+                }
+                @media screen and (max-width: 768px) {
+                    background: transparent;
+                    box-shadow: none;
+
+                    width: 100%;
+                    height: auto;
+
+                    padding: 0;
+                }
+
+                .card-headline {
+                    @include Merriweather-38px;
+                    font-weight: 700;
+                    color: $black-secondary;
+
+                    margin-bottom: 1.6rem;
+
+                    @media screen and (max-width: 425px) {
+                        @include headlineMobile-30px;
+                    }
+                }
+
+                .card-text {
+                    @include Georgia-18px;
+                    color: $gray-secondary-light;
+
+                    @media screen and (max-width: 425px) {
+                        text-align: center;
+                        @include textMobile-16px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.education {
+    background: $gray-primary;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .headline {
+            @include headline;
+            margin-bottom: 4.8rem;
+
+            @media screen and (max-width: 425px) {
+                margin-bottom: 4rem;
+            }
+        }
+    
+        .text {
+            display: flex;
+            align-items: center;
+            column-gap: 2.4rem;
+
+            padding: 3.2rem 8.8rem;
+            border-radius: 1.6rem;
+
+            background: $gray-primary-light;
+            box-shadow: 0px 4px 100px 0px rgba(0, 0, 0, 0.10);
+
+            @media screen and (max-width: 768px) {
+                flex-direction: column;
+                text-align: center;
+
+                background: transparent;
+                box-shadow: none;
+                padding: 0;
+
+                row-gap: 1.6rem;
+            }
+
+            .main {
+                display: flex;
+                flex-direction: column;
+
+                span:first-child {
+                    @include Merriweather-20px-Bold;
+                    color: $black-secondary;
+
+                    margin-bottom: .4rem;
+
+                    @media screen and (max-width: 768px) {
+                        margin-bottom: .8rem;
+                    }
+                }
+
+                span:last-child {
+                    @include Georgia-20px;
+                    color: $gray-secondary-light;
+                }
+
+                span {
+                    @media screen and (max-width: 425px) {
+                        @include textMobile-18px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.quote {
+    padding: 0;
+    
+    .container {
+        background: url(../../images/content/about-me/quote-bg.webp),linear-gradient(0deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.60) 100%), lightgray -2px -296.793px / 100.162% 204.36% no-repeat;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        max-height: 44.3rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        padding: 14.5rem 24rem;
+
+        row-gap: 3.8rem;
+
+        @include quotes-padding;
+
+        .headline {
+            @include Merriweather-38px;
+            font-weight: 400;
+            color: $tertiary;
+
+            text-shadow: 0px 0px 85px rgba(0, 0, 0, 0.25);
+
+            @media screen and (max-width: 768px) {
+                text-wrap: pretty;
+            }
+
+            @media screen and (max-width: 425px) {
+                @include headlineMobile-22px;
+            }
+        }
+
+        .headline-support {
+            width: 100%;
+            text-align: right;
+
+            @include Georgia-24px;
+            color: $tertiary;
+
+            @media screen and (max-width: 425px) {
+                @include textMobile-16px;
+            }
+        }
+    }
+}
+
+.system {
+    background: $gray-primary;
+    @include padding-top;    
+
+    .container {
+        display: flex;
+        column-gap: 8.6rem;
+        justify-content: space-between;
+
+        @media screen and (max-width: 991px) {
+            flex-direction: column;
+        }
+    
+        h3 {
+            display: flex;
+            align-items: center;
+
+            @include Merriweather-38px;
+            font-weight: 400;
+            color: $black-secondary;
+
+            @media screen and (max-width: 991px) {
+                min-width: 100%;
+                margin-bottom: 4.8rem;
+            }
+
+            @media screen and (max-width: 425px) {
+                @include Georgia-18px;
+                @include textMobile-16px;
+
+                margin-bottom: 0;
+                padding-bottom: 1.6rem;
+                border-bottom: .2rem solid $black-secondary;
+            }
+        }
+
+        .quotes {
+            p {
+                padding: 1.6rem 0;
+
+                border-bottom: .2rem solid $black-secondary;
+
+                @include Georgia-18px;
+                color: $black-secondary;
+
+                @media screen and (max-width: 425px) {
+                    @include textMobile-16px;
+                    border-width: .1rem;
+                }
+
+                .highlight {
+                    @include highlight-class;
+                    font-weight: 700;
+                }
+            
+            }
+
+            p:last-child {
+                span:last-child {
+                    display: block;
+                    max-width: 85%;
+                }
+            }
+        }
+    }
+}
+
+.quote-system {
+    padding: 0;
+
+    .container {
+        background: url(../../images/content/about-me/quote-system.webp);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        max-height: 44.3rem;
+        height: 100%;
+
+        padding: 14.5rem 5.6rem;
+
+        text-align: right;
+
+        @media screen and (max-width: 768px) {
+            padding: 4.8rem 5.6rem;
+        }
+        @media screen and (max-width: 575px) {
+            padding: 4.8rem 2.4rem;
+        }
+
+        .headline {
+            @include Merriweather-38px;
+            font-weight: 400;
+            color: $tertiary;
+
+            @media screen and (max-width: 425px) {
+                @include headlineMobile-22px;
+            }
+        }
+    }    
+}
+
+.approach {
+    background: $gray-primary;
+
+    @media screen and (max-width: 991px) {
+        padding-top: 7.2rem;
+    }
+    @media screen and (max-width: 425px) {
+        padding-top: 4.8rem;
+    }
+
+    h3 {
+        @include headline;
+        display: flex;
+        justify-content: center;
+
+        margin-bottom: 5.5rem;
+
+        @media screen and (max-width: 425px) {
+            margin-bottom: 3.6rem;
+        }
+    }
+
+    .main {
+        display: flex;
+        column-gap: 8.4rem;
+        
+        &__plan {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            @media screen and (max-width: 991px) {
+                width: 100%;
+            }
+
+            .item {
+                display: flex;
+                align-items: flex-start;
+                column-gap: 3.2rem;
+
+                padding: 1.6rem 0;
+                border-bottom: .2rem solid $black-secondary;
+
+                @media screen and (max-width: 425px) {
+                    border-width: .1rem;
+                    padding: 4.3rem 0;
+
+                    border-width: .1rem;
+                }
+
+                &__number {
+                    @include Merriweather-38px;
+                    color: $accent;
+
+                    position: relative;
+                    bottom: 0.5rem;
+
+                    @media screen and (max-width: 425px) {
+                        @include headlineMobile-36px;
+                    }
+                }
+
+                &__text {
+                    @include Georgia-18px;
+                    color: $black-secondary;
+
+                    @media screen and (max-width: 425px) {
+                        @include textMobile-16px;
+                    }
+                }
+            }
+
+            .item:first-child {
+                padding-top: 0;
+            }
+        }
+
+        &__img-container {
+            min-width: 40%;
+
+            @media screen and (max-width: 1300px) {
+                min-width: 45%;
+            }
+            @media screen and (max-width: 1200px) {
+                min-width: 50%;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+.credo {
+    padding: 0;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+
+        row-gap: 2.4rem;
+
+        padding: 14.5rem 24rem;
+        max-height: 44.3rem;
+
+        background: url(../../images/content/about-me/credo-bg.webp), lightgray 0.21px -113.105px / 100% 212.664% no-repeat;;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        @include quotes-padding;
+
+        @media screen and (max-width: 425px) {
+            row-gap: .8rem;
+        }
+
+        .credo-headline {
+            @include Georgia-24px;
+
+            @media screen and (max-width: 425px) {
+                @include textMobile-16px;
+                margin-bottom: .8rem;
+            }
+        }
+
+        .credo-quote {
+            @include Merriweather-38px;
+            font-weight: 400;
+
+            @media screen and (max-width: 425px) {
+                @include headlineMobile-22px;
+                text-align: right;
+            }
+        }
+
+        .credo-headline, .credo-quote {
+            color: $tertiary;
+            text-shadow: 0px 0px 85px rgba(0, 0, 0, 0.25);
+        }
+    }
+}
+
+.benefits {
+    background: $gray-primary;
+    @include padding-top;
+
+    .container {
+        h3 {
+            display: flex;
+            justify-content: center;
+
+            @include headline;
+
+            margin-bottom: 4.8rem;
+
+            @media screen and (max-width: 425px) {
+                margin-bottom: 4rem;
+            }
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            gap: 3rem;
+
+            @media screen and (max-width: 991px) {
+                gap: 0;
+            }
+
+            &__card {
+                display: flex;
+                align-items: center;
+
+                width: 32rem;
+                height: 24rem;
+
+                padding: 3.2rem;
+                border-radius: 1.6rem;
+
+                background: $gray-primary-light;
+                box-shadow: 0px 4px 100px 0px rgba(0, 0, 0, 0.10);
+
+                @include Georgia-18px;
+                color: $gray-secondary-light;
+                text-align: center;
+
+                @media screen and (max-width: 1150px) {
+                    min-width: 40rem;
+                }
+                @media screen and (max-width: 991px) {
+                    min-width: 100%;
+                    height: auto;
+
+                    background: none;
+                    box-shadow: none;
+
+                    justify-content: center;
+
+                    border-bottom: .1rem solid $black-secondary;
+                    border-radius: 0;
+
+                    padding: 3.2rem 1.6rem;
+                }
+            }
+
+            &__card:first-child {
+                @media screen and (max-width: 991px) {
+                    padding-top: 0;
+                }
+            }
+        }
+    }
+}
+
+.bring-benefits {
+    padding: 0;
+
+    .container {
+        background: url(../../images/content/about-me/bring-benefits-bg.webp) ,lightgray 0.21px -113.105px / 100% 212.664% no-repeat;;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        padding: 7.2rem 24rem;
+
+        @include quotes-padding;
+
+        h3 {
+            display: flex;
+            justify-content: center;
+
+            @include headline;
+            font-weight: 400;
+            color: $tertiary;
+
+            margin-bottom: 4.8rem;
+
+            @media screen and (max-width: 425px) {
+                margin-bottom: 6.4rem;
+            }
+        }
+
+        .text {
+            display: flex;
+            justify-content: space-between;
+
+            @media screen and (max-width: 768px) {
+                flex-direction: column;
+                row-gap: 4.2rem;
+            }
+
+            &__column {
+                max-width: 45%;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                row-gap: 4.8rem;
+
+                @media screen and (max-width: 768px) {
+                    max-width: 100%;
+                    row-gap: 1.6rem;
+                }
+
+                p:first-child {
+                    max-width: 85%;
+                    min-height: 8.1rem;
+
+                    @include Georgia-24px;
+
+                    color: $tertiary;
+
+                    @media screen and (max-width: 1600px) {
+                        max-width: 95%;
+                    }
+                    @media screen and (max-width: 768px) {
+                        max-width: 100%;
+                        min-height: auto;
+                    }
+                    @media screen and (max-width: 425px) {
+                        @include textMobile-18px;
+                    }
+
+                    span {
+                        @include highlight-class;
+                    }
+                }
+
+                p:last-child {
+                    max-width: 70%;
+
+                    @include Georgia-18px;
+                    color: $tertiary;
+
+                    @media screen and (max-width: 1600px) {
+                        max-width: 95%;
+                    }
+                    @media screen and (max-width: 768px) {
+                        max-width: 100%;
+                    }
+                    @media screen and (max-width: 425px) {
+                        @include textMobile-16px;
+                    }
+                }
+
+                p {
+                    text-shadow: 0px 0px 8.5rem rgba(0, 0, 0, 0.25);
+
+                    @media screen and (max-width: 768px) {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.how-achieve {
+    background: $gray-primary;
+    @include padding-top;
+
+    padding-bottom: 8rem;
+
+    .container {
+        @media screen and (max-width: 991px) {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+        }
+        
+        h3 {
+            display: flex;
+            justify-content: center;
+            
+            @include headline;
+
+            margin-bottom: 4.8rem;
+
+            @media screen and (max-width: 425px) {
+                margin-bottom: 4rem;
+            }
+        }
+
+        .main {
+            display: flex;
+            justify-content: space-between;
+            column-gap: 5rem;
+            margin-bottom: 4rem;
+
+            @media screen and (max-width: 991px) {
+                flex-direction: column-reverse;
+            }
+
+            &__img-container {
+                max-width: 45rem;
+                max-height: 45rem;
+
+                @media screen and (max-width: 1500px) {
+                    max-width: 40rem;
+                }
+                @media screen and (max-width: 1200px) {
+                    max-width: 50%;
+                }
+                @media screen and (max-width: 991px) {
+                    max-width: 100%;
+                    max-height: 100%;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+
+            .text {
+                @media screen and (max-width: 991px) {
+                    max-width: 100%;
+                    margin-bottom: 4.8rem;
+                }
+                @media screen and (max-width: 425px) {
+                    margin-bottom: 3.2rem;
+                }
+
+                &__item {
+                    display: flex;
+                    align-items: flex-start;
+                    column-gap: 1.6rem;
+
+                    min-height: 6.5rem;
+
+                    padding: 2.6rem 0;
+                    border-bottom: .2rem solid $black-secondary;
+
+                    @media screen and (max-width: 1440px) {
+                        padding: 1.6rem 0;
+                    }
+
+                    @media screen and (max-width: 991px) {
+                        padding-top: 2.6rem;
+                        column-gap: 4.3rem;
+                    }
+                    
+                    @media screen and (max-width: 425px) {
+                        border-width: .1rem;
+                        padding: 1.6rem 0;
+                    }
+
+                    p {
+                        @include Georgia-18px;
+                        color: $black-secondary;
+
+                        @media screen and (max-width: 425px) {
+                            @include textMobile-16px;
+                        }
+                    }
+                }
+
+                &__item:first-child {
+                    padding-top: 0;
+                }
+            }
+        }
+
+        .mobile-btn {
+            @include button;
+
+            @media screen and (max-width: 991px) {
+                display: block;
+                min-width: 70%;
+            }
+        }
+    }
+}

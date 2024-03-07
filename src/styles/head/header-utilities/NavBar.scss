@@ -1,0 +1,49 @@
+@import '../../global/mixins.scss';
+@import '../../global/fonts-mixins/PTSansMix.scss';
+
+.header-nav {  
+    ul {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        column-gap: 6.4rem;
+
+        list-style-type: none;
+
+        @media screen and (max-width: 1150px) {
+            column-gap: 2.4rem;
+        }
+        @media screen and (max-width: 991px) {
+            column-gap: 0;
+        }
+
+        li {
+            border-radius: .8rem;
+            padding: 1.6rem;
+
+            transition: all .5s;
+
+            a {
+                @include PTSans-18px-Bold;
+                text-decoration: none;
+                color: $gray-secondary-light-ultra;
+
+                @media screen and (min-width: 991px) {
+                    &:hover {
+                        @include text-color-white;
+                        transition: all .5s;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.active {
+    @include color-orange;
+    transition: all .5s;
+
+    a {
+        color: $tertiary !important;
+    }
+}

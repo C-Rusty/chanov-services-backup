@@ -1,0 +1,35 @@
+@import './global/fonts.scss';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5% !important;
+    
+    .container {
+        padding: 0 20%;
+
+        @media screen and (max-width: 3000px) {
+            padding: 0 20%;
+        }
+        @media screen and (max-width: 2500px) {
+            padding: 0 15%;
+        }
+        @media screen and (max-width: 2000px) {
+            padding: 0 10%;
+        }
+        @media screen and (max-width: 1440px) {
+            padding: 0 5.6rem;
+        }
+        @media screen and (max-width: 575px) {
+            padding: 0 2.4rem;
+        }
+    }
+
+    section {
+        padding-bottom: 7.2rem;
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./src/",
+        "target": "ESNext",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "allowJs": true,
+        "jsx": "react",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "outDir": "./dist",
+        "strict": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true
+    },
+    "include": [
+        "src/**/*",
+        "src/custom.d.ts"
+    ]
+  }

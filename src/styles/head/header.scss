@@ -1,0 +1,107 @@
+@import '../global/mixins.scss';
+
+@keyframes smoothScroll {
+    0% {
+      transform: translateY(-142px);
+    }
+  
+    100% {
+      transform: translateY(0px);
+    }
+}
+
+.header {
+    width: 100%;
+    padding: 2.4rem 0;
+
+    background: $black-secondary;
+
+    @media screen and (max-width: 991px) {
+        position: relative;
+        z-index: 11;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        @media screen and (max-width: 425px) {
+            svg {
+                width: 4.6rem;
+                height: 2.4rem;
+            }
+        }
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        row-gap: .5rem;
+    
+        position: relative;
+    
+        width: 2.8rem;
+        height: 100%;
+    
+        &__line {
+            width: 2.8rem;
+            height: .3rem;
+            border-radius: .2rem;
+    
+            background: $gray-primary-light;
+    
+            transition: all .5s;
+        }
+    
+        &__line:first-child {
+            transform: rotate(0deg);
+    
+        }
+        &__line:nth-child(2) {
+            transform: rotate(0deg);
+    
+        }
+        &__line:last-child {
+            transform: rotate(0deg);
+        }
+    }
+
+    .hamburger-active {
+    
+        .hamburger__line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all .5s;
+        }
+    
+        .hamburger__line:first-child {
+            transform: rotate(45deg);
+    
+        }
+        .hamburger__line:nth-child(2) {
+            transform: rotate(-45deg);
+    
+        }
+        .hamburger__line:last-child {
+            transform: rotate(-45deg);
+            opacity: 0;
+        }
+    
+    }
+}
+
+.sticky {
+    position: sticky;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    z-index: 15;
+
+    transition: all .5s ease;
+    animation: smoothScroll 1s forwards;
+}

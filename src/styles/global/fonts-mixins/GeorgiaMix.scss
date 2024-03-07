@@ -1,0 +1,48 @@
+@mixin Georgia-38px {
+    font-family: "Georgia-Regular";
+    font-size: 3.8rem;
+}
+
+@mixin Georgia-32px {
+    font-family: "Georgia-Regular";
+    font-size: 3.2rem;
+}
+
+@mixin Georgia-24px {
+    font-family: "Georgia-Regular";
+    font-size: 2.4rem;
+}
+
+@mixin Georgia-24px-Bold {
+    font-family: "Georgia-Regular";
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+@mixin Georgia-20px {
+    font-family: "Georgia-Regular";
+    font-size: 2rem;
+}
+
+@mixin Georgia-20px-Bold {
+    font-family: "Georgia-Regular";
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+@mixin Georgia-18px {
+    font-family: "Georgia-Regular";
+    font-size: 1.8rem;
+}
+
+@mixin Georgia-18px-BoldItalic {
+    font-family: "Georgia-BoldItalic";
+    font-style: italic;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+@mixin Georgia-16px {
+    font-family: "Georgia-Regular";
+    font-size: 1.6rem;
+}

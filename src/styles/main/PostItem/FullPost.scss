@@ -1,0 +1,304 @@
+@import '../../global/mixins.scss';
+@import '../../global/fonts-mixins/PTSansMix.scss';
+@import '../../global/fonts-mixins/GeorgiaMix.scss';
+@import '../../global/fonts-mixins/MerriweatherMix.scss';
+
+.post-full {
+    background: $gray-primary;
+
+    padding: 8rem 0;
+
+    min-height: 100rem;
+
+    @media screen and (max-width: 768px) {
+        padding: 4.8rem 0;
+    }
+
+    .container {
+        .head {
+            display: flex;
+            justify-content: space-between;
+
+            margin-bottom: 5.6rem;
+
+            @media screen and (max-width: 991px) {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            &__back-btn, &__empty {
+                width: 15%;
+
+                @media screen and (max-width: 1200px) {
+                    width: 20%;
+                }
+            }
+
+            &__empty {
+                @media screen and (max-width: 991px) {
+                    display: none;
+                }
+            }
+
+            &__back-btn {
+                @include PTSans-18px;
+                color: $gray-secondary-light-ultra;
+
+                @media screen and (max-width: 991px) {
+                    width: 100%;
+                    margin-bottom: 4.8rem;
+                }
+                @media screen and (max-width: 768px) {
+                    margin-bottom: 3.2rem;
+
+                    @include textMobile-16px;
+                }
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+
+                    column-gap: .8rem;
+                    
+                    color: $gray-secondary-light-ultra;
+                    transition: all .4s;
+
+                    @media screen and (max-width: 1200px) {
+                        column-gap: .4rem;
+                    }
+                    @media screen and (max-width: 991px) {
+                       justify-content: center;
+                    }
+
+                    svg {
+                        path {
+                            transition: all .4s;
+                        }
+                    }
+
+                    &:hover {
+                        color: $articles-header;
+                        transition: all .4s;
+
+                        svg {
+                            path {
+                                fill: $articles-header;
+                                transition: all .4s;
+                            }
+                        }
+                    }
+
+                    img {
+                        width: 2.1rem;
+                        height: 1.8rem;
+                    }
+                }
+
+            }
+
+            &__tags {
+                display: flex;
+                column-gap: 8rem;
+
+                @media screen and (max-width: 768px) {
+                    column-gap: 4rem;
+                    width: 100%;
+                    justify-content: space-between;
+                }
+                @media screen and (max-width: 475px) {
+                    column-gap: 1rem;
+                }
+                @media screen and (max-width: 425px) {
+                    flex-wrap: wrap;
+                    row-gap: 1rem;
+                }
+
+                span {
+                    @include Georgia-20px;
+                    color: $secondary-light;
+                    font-weight: 700;
+
+                    @media screen and (max-width: 475px) {
+                        width: 48%;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+        .main {
+            section {
+                padding: 0;
+            }
+
+            &__headline {
+                @include Merriweather-38px-Bold;
+                color: $black-secondary;
+
+                margin-bottom: 4.8rem;
+
+                @media screen and (max-width: 768px) {
+                    @include headlineMobile-34px;
+                    margin-bottom: 4rem;
+
+                    text-align: left;
+                    text-wrap: balance;
+                }
+            }
+
+            &__subheadline {
+                @include Georgia-18px;
+                color: $black-secondary;
+
+                margin-bottom: 3.2rem;
+
+                @media screen and (max-width: 768px) {
+                    @include textMobile-16px;
+                    margin-bottom: 2.4rem;
+                }
+            }
+
+            &__img-block {
+                margin-bottom: 4rem;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    max-height: 84rem;
+
+                    margin-bottom: .8rem;
+                }
+
+                .text {
+                    @include Georgia-18px;
+                    color: $black-secondary;
+
+                    @media screen and (max-width: 768px) {
+                        @include textMobile-12px;
+                    }
+
+                    &__link {
+                        color: $black-secondary;
+                    }
+                }
+            }
+
+            &__text-block {
+                $elements-gap: 1.6rem;
+
+                margin-bottom: 4rem;
+
+                display: flex;
+                flex-direction: column;
+                row-gap: $elements-gap;
+
+                text-wrap: pretty;
+
+                .headline {
+                    @include Merriweather-32px-Bold;
+                    margin-bottom: calc($elements-gap - .8rem);
+
+                    @media screen and (max-width: 768px) {
+                        @include headlineMobile-22px;
+                    }
+                }
+
+                .headline-support-section {
+                    @include Merriweather-32px-Bold;
+                    margin-bottom: calc($elements-gap - .8rem);
+
+                    @media screen and (max-width: 768px) {
+                        @include textMobile-18px;
+                    }
+                }
+            
+                .text, .italic, .bold-text  {
+                    @include Georgia-18px;
+                    text-align: justify;
+                    color: $black-secondary;
+
+                    @media screen and (max-width: 768px) {
+                        @include textMobile-16px;
+                    }
+                }
+
+                .bold-text {
+                    font-weight: 700;
+                }
+
+                .text {
+                    &__link {
+                        text-decoration: underline;
+                        color: $black-secondary;
+                    }
+                    &__bold {
+                        font-weight: 700;
+                    }
+                    &__italic {
+                        font-style: italic;
+
+                        @include Georgia-18px;
+                        text-align: justify;
+                        color: $black-secondary;
+    
+                        @media screen and (max-width: 768px) {
+                            @include textMobile-16px;
+                        }
+                    }
+                }
+
+                ul {
+                    padding-left: 2rem;
+
+                    li {
+                        @include Georgia-18px;
+
+                        @media screen and (max-width: 768px) {
+                            @include textMobile-16px;
+                        }
+                    }
+                }
+
+                .italic {
+                    font-style: italic;
+
+                    @media screen and (max-width: 768px) {
+                        @include textMobile-16px;
+                    }
+                }
+
+                .text-highlighted {
+                    &__vertical-line {
+                        display: none;
+                    }
+
+                    &__text {
+                        @include Georgia-18px-BoldItalic;
+
+                        padding-left: 3.2rem;
+                        margin-left: 5rem;
+                        border-left: .4rem solid $black-secondary;
+
+                        @media screen and (max-width: 768px) {
+                            @include textMobile-16px;
+
+                            margin-left: 1.8rem;
+                            padding-left: 3.2rem;
+                        }
+                    }
+                }
+            }
+
+            &__text-block:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .container:nth-child(2) {
+        @media screen and (max-width: 991px) {
+            padding: 0;
+        }
+    }
+}

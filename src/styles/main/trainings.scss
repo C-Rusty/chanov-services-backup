@@ -1,0 +1,523 @@
+@import '../global/mixins.scss';
+@import '../global/fonts-mixins/MerriweatherMix.scss';
+@import '../global/fonts-mixins/GeorgiaMix.scss';
+
+@mixin margin-bottom {
+    margin-bottom: 8rem;
+
+    @media screen and (max-width: 425px) {
+        margin-bottom: 4.8rem;
+    }
+}
+
+@mixin section-styles {
+    padding-top: 8rem;
+    margin-bottom: 7.2rem;
+
+    background: $gray-primary-light;
+    border-radius: 4rem;
+
+    @media screen and (max-width: 425px) {
+        padding: 3.2rem 0;
+    }
+}
+
+@mixin description-styles {
+    @include margin-bottom;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        column-gap: 4rem;
+
+        @media screen and (max-width: 1150px) {
+            display: block;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            max-width: 55%;
+
+            @media screen and (max-width: 1150px) {
+                max-width: 100%;
+            }
+
+            h2 {
+                @include Merriweather-38px;
+                font-weight: 700;
+                margin-bottom: 3.2rem;
+
+                @media screen and (max-width: 991px) {
+                    text-align: center;
+                }
+
+                @media screen and (max-width: 425px) {
+                    @include headlineMobile-30px;
+                    margin-bottom: 2.4rem;
+                }
+            }
+
+            .img-container-mobile {
+                width: 100%;
+                margin-bottom: 4.8rem;
+
+                @media screen and (max-width: 425px) {
+                    margin-bottom: 2.4rem;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+
+                    @media screen and (max-width: 425px) {
+                        min-height: 20.7rem;
+                    }
+                }
+            }
+
+            .aim-text {
+                @include Georgia-24px;
+                color: $gray-secondary-light;
+                margin-bottom: 4rem;
+
+                @media screen and (max-width: 768px) {
+                    text-align: center;
+                }
+
+                @media screen and (max-width: 425px) {
+                    @include textMobile-18px;
+                    margin-bottom: 2.4rem;
+                }
+            }
+
+            .info-col {
+                display: flex;
+                column-gap: 8.8rem;
+
+                margin-bottom: 5.5rem;
+
+                @media screen and (max-width: 1150px) {
+                    column-gap: 6.4rem;
+                }
+                @media screen and (max-width: 768px) {
+                    flex-direction: column;
+                    column-gap: 0;
+                    row-gap: 1.6rem;
+                }
+                @media screen and (max-width: 425px) {
+                    margin-bottom: 3.2rem;
+                }
+
+                &__item {
+                    display: flex;
+                    flex-direction: column;
+
+                    row-gap: 3.2rem;
+
+                    @media screen and (max-width: 768px) {
+                        justify-content: space-between;
+                        column-gap: 1.7rem;
+                        row-gap: 0;
+                        align-items: center;
+
+                        text-align: center;
+                    }
+
+                    p, span {
+                        @include Georgia-20px;
+                        color: $gray-secondary-light;
+                        font-weight: 700;
+
+                        @media screen and (max-width: 768px) {
+                            width: 45%;
+                        }
+    
+                        @media screen and (max-width: 425px) {
+                            @include textMobile-16px;
+                        }
+                    }
+                }
+
+                &__item:first-child {
+                    @media screen and (max-width: 768px) {
+                        flex-direction: row;
+                    }
+                }
+                &__item:last-child {
+                    @media screen and (max-width: 768px) {
+                        flex-direction: row-reverse;
+                    }
+                }
+            }
+
+            a {
+                @include button;
+                max-width: 21.5rem;
+
+                @media screen and (max-width: 1150px) {
+                    max-width: 40rem;
+                }
+                @media screen and (max-width: 991px) {
+                    max-width: 100%;
+                }
+            }
+        }
+
+        .img-container-desktop {
+            min-width: 35%;
+
+            @media screen and (max-width: 1400px) {
+                min-width: 45%;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+@mixin result-styles {
+    @include margin-bottom;
+
+    @media screen and (max-width: 425px) {
+        padding: 1.6rem;
+        margin-bottom: 0;
+    }
+
+    .container {
+        .result-inner {
+            padding: 4rem 0;
+
+            h3, p {
+                font-weight: 700;
+            }
+
+            h3 {
+                @include Merriweather-32px;
+                color: $tertiary;
+                text-align: center;
+
+                margin-bottom: 4.8rem;
+
+                @media screen and (max-width: 425px) {
+                    margin-bottom: 4rem;
+
+                    @include headlineMobile-30px;
+                }
+            }
+
+            .in-detail {
+                display: flex;
+                justify-content: space-between;
+
+                @media screen and (max-width: 991px) {
+                    flex-direction: column;
+                    row-gap: 3rem;
+                }
+                @media screen and (max-width: 425px) {
+                    row-gap: 3.2rem;
+                    text-align: center;
+                }
+                
+                p {
+                    @include Georgia-24px;
+                    // font-weight: 400;
+                    color: $tertiary-inactive;
+
+                    @media screen and (max-width: 991px) {
+                        text-align: center;
+                    }
+
+                    @media screen and (max-width: 425px) {
+                        @include textMobile-18px;
+                    }
+                }
+
+                p:first-child {
+                    max-width: 37%;
+
+                    @media screen and (max-width: 991px) {
+                        max-width: 100%;
+                    }
+                }
+
+                p:last-child {
+                    max-width: 43%;
+
+                    @media screen and (max-width: 991px) {
+                        max-width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.trainings-list {
+    background: $gray-primary;
+    padding: 8rem 5.6rem;
+
+    @media screen and (max-width: 576px) {
+        padding: 4.8rem 2.4rem;
+    }
+
+    .mba-trainings {
+        @include section-styles;
+
+        &__description {
+            @include description-styles;
+
+            .info-col__item:last-child {
+                p:first-child {
+                    max-width: 60%;
+
+                    @media screen and (max-width: 768px) {
+                        max-width: 100%;
+                    }
+                }
+            }
+        }
+
+        &__when-needed {
+            @include margin-bottom;
+
+            .container {
+                display: flex;
+                justify-content: space-between;
+                column-gap: 3rem;
+
+                @media screen and (max-width: 1500px) {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                }
+                @media screen and (max-width: 991px) {
+                    display: flex;
+                    flex-direction: column;
+                    column-gap: 0;
+                    row-gap: 3rem;
+                }
+                
+                .card {
+                    display: flex;
+                    align-items: center;
+
+                    max-width: 39rem;
+                    max-height: fit-content;
+
+                    padding: 6rem 3.2rem;
+                    border-radius: 1.6rem;
+
+                    background: $gray-primary-light;
+                    box-shadow: 0px 4px 100px 0px rgba(0, 0, 0, 0.10);
+
+                    text-align: center;
+
+                    @media screen and (max-width: 1050px) {
+                        padding: 3.2rem;
+                    }
+                    @media screen and (max-width: 991px) {
+                        max-width: 100%;
+                    }
+                    @media screen and (max-width: 425px) {
+                        padding: 0 1.6rem 3.2rem;
+                        background: none;
+                        box-shadow: none;
+
+                        border-bottom: .1rem solid $black-secondary;
+                        border-radius: 0;
+                    }
+
+                    p {
+                        @include Georgia-18px;
+                        color: $gray-secondary-light;
+
+                        @media screen and (max-width: 425px) {
+                            @include textMobile-16px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__clients {
+            @include margin-bottom;
+
+            .container {
+                .headline {
+                    text-align: center;
+                    margin-bottom: 5.6rem;
+
+                    @media screen and (max-width: 425px) {
+                        margin-bottom: 4rem;
+                    }
+
+                    h3 {
+                        @include Merriweather-32px;
+                        font-weight: 700;
+                        color: $gray-secondary-light;
+
+                        margin-bottom: 1rem;
+
+                        @media screen and (max-width: 425px) {
+                            @include headlineMobile-30px;
+                            margin-bottom: 1.6rem;
+                        }
+                    }
+
+                    h4 {
+                        @include Georgia-24px;
+                        color: $gray-secondary-light;
+
+                        @media screen and (max-width: 425px) {
+                            @include textMobile-18px;
+                        }
+                    }
+                }
+
+                .client-items {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    justify-content: space-between;
+
+                    row-gap: 4.6rem;
+
+                    @media screen and (max-width: 991px) {
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    @media screen and (max-width: 425px) {
+                        row-gap: 3.5rem;
+                    }
+
+                    &__item {
+                        text-align: center;
+
+                        h5, .country {
+                            max-width: 65%;
+                            color: $gray-secondary-light;
+
+                            @media screen and (max-width: 991px) {
+                                max-width: 100%;
+                            }
+                        }
+                        
+                        h5 {
+                            @include Georgia-24px;
+                            font-weight: 700;
+
+                            margin-bottom: .8rem;
+                            
+                            @media screen and (max-width: 425px) {
+                                @include headlineMobile-22px;
+                            }
+                        }
+
+                        .country {
+                            display: block;
+                            @include Georgia-18px;
+
+                            @media screen and (max-width: 425px) {
+                                @include textMobile-16px;
+                            }
+                        }
+                    }
+
+                    &__item:nth-child(2), &__item:nth-child(5) {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                    
+                    &__item:nth-child(3) {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: end;
+
+                        @media screen and (max-width: 991px) {
+                            align-items: center;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__result {
+            @include result-styles;
+
+            .container {
+                background: url(../../images/content/trainings/training-result.webp);
+            }
+        }
+    }
+
+    .cjm {
+        @include section-styles;
+
+        @media screen and (max-width: 425px) {
+            margin-bottom: 0;    
+        }
+
+        &__description {
+            @include description-styles;
+        }
+
+        &__info {
+           @include margin-bottom;
+
+            .container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                column-gap: 5rem;
+
+                @media screen and (max-width: 768px) {
+                    display: flex;
+                    flex-direction: column;
+                    column-gap: 0;
+                    row-gap: 3rem;
+                }
+
+                .card {
+                    display: flex;
+                    max-height: 24rem;
+                    padding: 3.2rem;
+                    justify-content: center;
+                    align-items: center;
+
+                    border-radius: 1.6rem;
+                    background: $gray-primary-light;
+
+                    box-shadow: 0px 4px 100px 0px rgba(0, 0, 0, 0.10);
+
+                    @include Georgia-18px;
+                    color: $gray-secondary-light;
+                    text-align: center;
+
+                    @media screen and (max-width: 425px) {
+                        padding: 0 1.6rem 3.2rem;
+                        background: none;
+                        box-shadow: none;
+
+                        border-bottom: .1rem solid $black-secondary;
+                        border-radius: 0;
+
+                        @include textMobile-16px;
+                    }
+                }
+            }
+        }
+
+        &__result {
+            @include result-styles;
+            margin-bottom: 0;
+
+            .container {
+                background: url(../../images/content//trainings/cjm-result.webp);
+            }
+        }
+    }
+}

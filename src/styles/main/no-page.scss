@@ -1,0 +1,100 @@
+@import '../global/mixins.scss';
+@import '../global/fonts-mixins/MerriweatherMix.scss';
+
+.no-page {
+    background-color: $gray-primary;
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        min-height: calc(100vh - 10.3rem);
+
+        @media screen and (max-width: 1200px) {
+            flex-direction: column-reverse;
+            justify-content: center;
+            align-items: center;
+
+            min-height: calc(100vh - 10.3rem);
+        }
+
+        .error {
+            max-width: 70%;
+
+            @media screen and (max-width: 1200px) {
+                max-width: 100%;
+            }
+
+            &__text, &__link > p {
+                @include Merriweather-38px-Bold;
+                color: $black-secondary;
+
+                @media screen and (max-width: 1200px) {
+                    text-align: center;
+                }
+                @media screen and (max-width: 768px) {
+                    text-align: center;
+                    @include headlineMobile-30px;
+                }
+            }
+
+            &__text {
+                margin-bottom: 3.2rem;
+                text-wrap: pretty;
+            }
+
+            &__link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+
+                @include button;
+                max-width: 50%;
+
+                transition: all .3s;
+
+                @media screen and (max-width: 1200px) {
+                    max-width: 100%;
+                }
+
+                &:hover {
+                    transition: all .3s;
+
+                    svg {
+                        path {
+                            fill: $accent-hover;
+                        }
+                    }
+                }
+
+                svg {
+                    height: 3.5rem;
+                    width: 3rem;
+                    margin-right: 1rem;
+
+                    path {
+                        fill: $black-secondary;
+                    }
+                }
+            }
+        }
+
+        .img {
+            width: 40rem;
+
+            @media screen and (max-width: 1200px) {
+                width: 40rem;
+            }
+            @media screen and (max-width: 425px) {
+                width: 100%;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}

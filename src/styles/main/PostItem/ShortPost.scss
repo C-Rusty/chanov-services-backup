@@ -1,0 +1,222 @@
+@import '../../global/mixins.scss';
+@import '../../global/fonts-mixins/MerriweatherMix.scss';
+@import '../../global/fonts-mixins/PTSansMix.scss';
+
+@mixin shortPost {
+    .post-short {
+        display: flex;
+        flex-direction: column;
+        column-gap: 2.4rem;
+
+        text-decoration: none;
+
+        width: 48%;
+
+        padding: 1.6rem;
+        border-radius: .8rem;
+        box-shadow: 0px 4px 100px 0px rgba(0, 0, 0, 0.10);
+
+        transition: linear 1s;
+
+        background: $gray-primary-light;
+
+        @media screen and (min-width: 1024px) {
+            &:hover {
+                cursor: pointer;
+    
+                img {
+                    filter: brightness(65%);
+                    transition: all .3s;
+                }
+    
+                .img__read-hover {
+                    display: block;
+                    position: absolute;
+                    top: 50%;
+                    z-index: 20;
+                    transition: all .3s
+    
+                }
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            width: 100%;
+        }
+
+        &__img, .post-short-skeleton-image {
+            position: relative;
+            margin-bottom: 1.6rem;
+
+            height: 28rem;
+
+            @media screen and (max-width: 1300px) {
+                height: 24rem;
+            }
+            @media screen and (max-width: 1100px) {
+                height: 22rem;
+            }
+            @media screen and (max-width: 768px) {
+                height: 35rem;
+            }
+            @media screen and (max-width: 475px) {
+                height: 20rem;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+
+                border-radius: .8rem;
+                transition: all .3s;
+            }
+
+            .img__read-hover {
+                @include Merriweather-24px;
+                color: $tertiary;
+
+                position: absolute;
+                top: 90%;
+                left: 40%;
+                z-index: -1;
+
+                transition: all .25s
+            }
+        }
+
+        &__info {
+            h2 {
+                @include Merriweather-24px;
+                color: $black-secondary;
+                padding: 0 .8rem;
+
+                margin-bottom: 1.6rem;
+
+                @media screen and (max-width: 425px) {
+                    @include textMobile-18px;
+                }
+
+            }
+
+            .categories {
+                display: flex;
+                flex-wrap: wrap;
+                column-gap: .8rem;
+                row-gap: .8rem;
+
+                h3 {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    padding: .8rem 1.6rem;
+                    border-radius: 1.6rem;
+
+                    background: $gray-secondary-light;
+
+                    @include PTSans-14px-Bold;
+                    color: $tertiary;
+
+                    @media screen and (max-width: 425px) {
+                        @include textMobile-12px;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .post-short:nth-child(5n + 1) {
+        flex-direction: row;
+
+        max-width: 100%;
+        width: 100%;
+
+        &:hover {
+            .img__read-hover {
+                display: block;
+                position: absolute;
+                top: 50%;
+                z-index: 20;
+                left: 40%;
+                transition: all .3s
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+        }
+
+        .post-short__img {
+            margin-bottom: 0;
+            min-width: 50%;
+            max-width: 50%;
+
+            height: 32rem;
+
+            @media screen and (max-width: 1300px) {
+                height: 24rem;
+            }
+            @media screen and (max-width: 991px) {
+                height: 30rem;
+            }
+            @media screen and (max-width: 768px) {
+                height: 35rem;
+                min-width: 100%;
+            }
+            @media screen and (max-width: 475px) {
+                height: 20rem;
+            }
+
+            img {
+                height: 100%;
+            }
+
+            &__read-hover {
+                top: 90%;
+            }
+        }
+
+        .post-short__info {
+            padding: 1.6rem 0;
+
+            @media screen and (max-width: 768px) {
+                padding-bottom: 0;
+            }
+
+            h2 {
+                max-width: 75%;
+
+                margin-bottom: 2.4rem;
+                padding: 0;
+            }
+        }
+    }
+
+    .post-short, .post-short:nth-child(5n + 1) {
+        @media screen and (max-width: 576px) {
+            height: auto;
+            max-width: 100%;
+
+            padding: .8rem .8rem 1.6rem;
+
+            .post-short {
+                margin-bottom: .8rem;
+
+                min-height: 70%;
+                max-height: 70%;
+            }
+
+            .post-short {
+                padding: 0;
+                margin-bottom: 1.6rem;
+            }
+        }
+
+        @media screen and (max-width: 425px) {
+            height: 50%;
+        }
+    }
+}
+
+@include shortPost;
