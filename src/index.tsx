@@ -5,7 +5,7 @@ import LangEn from './locales/en.json';
 import LangRu from './locales/ru.json';
 import './styles/App.scss';
 import i18next from "i18next";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import { createRoot } from 'react-dom/client';
@@ -48,14 +48,14 @@ const App = () => {
     return (
         <React.StrictMode>
                 <I18nextProvider i18n={i18next}>
-                    <BrowserRouter>
+                    <HashRouter>
                         <Provider store={store}>
                             <Header/>
                             <Content/>
                             <LegalDocsModal/>
                             <Footer/>
                         </Provider>
-                    </BrowserRouter>
+                    </HashRouter>
                 </I18nextProvider>
         </React.StrictMode>
     );
