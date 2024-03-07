@@ -5,8 +5,10 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.config.js",
     "build": "webpack --config webpack.production.config.js",
-    "deploy": "gh-pages -d -public"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d public"
   },
+ "homepage" : "https://c-rusty.github.io/olegchanov.com-full-version/",
   "author": "",
   "license": "ISC",
   "devDependencies": {
