@@ -8,6 +8,9 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d public"
   },
+  "repository": {
+    "url": "git+https://github.com/c-rusty/olegchanov.com-full-version.git"
+  },
  "homepage" : "https://c-rusty.github.io/olegchanov.com-full-version/",
   "author": "",
   "license": "ISC",
