@@ -8,6 +8,7 @@ import { IFullPost } from "interface/Interface";
 import parse from 'html-react-parser';
 import { apiImg } from "../../../../api/ApiImg";
 import Loading from "../Loading";
+import { checkToken } from "../../../../api/ReCaptchaVerification";
 
 const FullPost = () => {
 
@@ -17,6 +18,11 @@ const FullPost = () => {
     const [postContent, setPostContent] = useState<IFullPost | undefined>(undefined);
 
     const getPostContent = async () => {
+        // if (window.location.hostname !== `localhost`) {
+        //     const response = await checkToken();
+        //     if (response === `error`) throw new Error(`Something wrong with token request`);
+        // };
+        
         const response: IFullPost | undefined = await api.getFullPost(document.documentElement.lang, cloudPath);
         if (response) setPostContent(response);
     };
