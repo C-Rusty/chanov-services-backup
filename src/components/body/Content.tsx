@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from "react";
-import AboutMe from "./utilities/AboutMe";
-import Trainings from "./utilities/Trainings";
-import ArticlesAndCases from "./utilities/ArticlesAndCases";
-import Contacts from "./utilities/Contacts";
 import { Route, Routes} from "react-router-dom";
 import { api } from "../../api/ApiPosts";
 import Loading from "./utilities/Loading";

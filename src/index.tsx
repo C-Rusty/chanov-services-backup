@@ -5,7 +5,7 @@ import LangEn from './locales/en.json';
 import LangRu from './locales/ru.json';
 import './styles/App.scss';
 import i18next from "i18next";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import { createRoot } from 'react-dom/client';
@@ -47,16 +47,16 @@ const App = () => {
     
     return (
         <React.StrictMode>
-                <I18nextProvider i18n={i18next}>
-                    <BrowserRouter>
-                        <Provider store={store}>
-                            <Header/>
-                            <Content/>
-                            <LegalDocsModal/>
-                            <Footer/>
-                        </Provider>
-                    </BrowserRouter>
-                </I18nextProvider>
+            <I18nextProvider i18n={i18next}>
+                <HashRouter basename="/olegchanov.com-full-version/">
+                    <Provider store={store}>
+                        <Header/>
+                        <Content/>
+                        <LegalDocsModal/>
+                        <Footer/>
+                    </Provider>
+                </HashRouter>
+            </I18nextProvider>
         </React.StrictMode>
     );
 };
