@@ -6,10 +6,6 @@
     "start": "webpack-dev-server --config webpack.dev.config.js",
     "build": "webpack --config webpack.production.config.js"
   },
-  "repository": {
-    "url": "git+https://github.com/c-rusty/olegchanov.com-full-version.git"
-  },
- "homepage" : "https://c-rusty.github.io/olegchanov.com-full-version/",
   "author": "",
   "license": "ISC",
   "devDependencies": {
