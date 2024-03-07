@@ -47,16 +47,16 @@ const App = () => {
     
     return (
         <React.StrictMode>
-                <I18nextProvider i18n={i18next}>
-                    <HashRouter>
-                        <Provider store={store}>
-                            <Header/>
-                            <Content/>
-                            <LegalDocsModal/>
-                            <Footer/>
-                        </Provider>
-                    </HashRouter>
-                </I18nextProvider>
+            <I18nextProvider i18n={i18next}>
+                <HashRouter basename="/olegchanov.com-full-version/">
+                    <Provider store={store}>
+                        <Header/>
+                        <Content/>
+                        <LegalDocsModal/>
+                        <Footer/>
+                    </Provider>
+                </HashRouter>
+            </I18nextProvider>
         </React.StrictMode>
     );
 };
