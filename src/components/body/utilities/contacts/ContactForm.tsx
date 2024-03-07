@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { setFormSentStatus } from "../../../../store/FormSendReducer";
-import { _reCaptchaApiKey } from "../../../../api/ReCaptchaVerification";
 
 const ContactForm = () => {
 
@@ -135,21 +134,6 @@ const ContactForm = () => {
         };
     };
 
-    const insertCaptchaScript = () => {
-        const captchaScript = document.createElement(`script`);
-        captchaScript.src = `https://www.google.com/recaptcha/api.js`;
-        captchaScript.type = `async`;
-        document.head.append(captchaScript);
-    };
-
-    function onSubmit(token: any) {
-        console.log(token);
-    };
-
-    useEffect(() => {
-        insertCaptchaScript();
-    }, []);
-
     return (
         <div className="form-container">
             <form action="submit" method="post" onSubmit={(e) => submitForm(e)}>
@@ -202,9 +186,6 @@ const ContactForm = () => {
                 </label>
                 <button 
                     type="submit"
-                    data-sitekey={_reCaptchaApiKey}
-                    data-callback='onSubmit'
-                    data-action='submit'
                 >{t (`Contact me`)}</button>
             </form>
         </div>
