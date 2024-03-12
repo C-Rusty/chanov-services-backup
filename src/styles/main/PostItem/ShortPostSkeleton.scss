@@ -16,7 +16,7 @@
 @include shortPost;
 
 .post-skeleton {
-    h2, .categories > h3, .post-short__img {
+    h2, h3, .post-short__img {
         @include background-gradient;
         animation: loading 2.5s infinite linear;
     }
@@ -25,6 +25,8 @@
         width: 100%;
 
         .categories > h3 {
+            @include background-gradient;
+
             min-width: 10rem;
             min-height: 3rem;
         }

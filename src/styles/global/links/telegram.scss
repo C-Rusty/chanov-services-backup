@@ -1,0 +1,13 @@
+.telegram {
+    &:hover {
+        svg {
+            path:first-child {
+                fill: #24A1DE;
+            }
+        
+            path {
+                fill: white;
+            }
+        }
+    }
+}

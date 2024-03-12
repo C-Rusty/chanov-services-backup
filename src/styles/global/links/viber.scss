@@ -1,0 +1,11 @@
+.viber {
+    &:hover {
+        path:first-child {
+            fill: white;
+        }
+    
+        path {
+            fill: #7360F2;
+        }
+    }
+}

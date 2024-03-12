@@ -17,7 +17,7 @@ const store = configureStore({
         deviceType: DeviceTypeReducer,
         formReducer: FormSendReducer,
         modalLegalReducer: ModalLegalReducer,
-        mobilePositionReducer: MobilePositionReducer
+        mobilePositionReducer: MobilePositionReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

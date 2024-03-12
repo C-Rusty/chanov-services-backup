@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { api } from "../../../api/ApiPosts";
-import { IPost } from "interface/Interface";
-import '../../../styles/main/articles-cases.scss';
-import ShortPost from "./post/ShortPost";
-import { useSelector } from "react-redux";
-import FiltersBar from "./menu/FiltersBar";
-import { IRootState } from "store/store";
-import MobileFilterBtn from "./filtersMobile/MobileFilterBtn";
 import { Outlet, useLocation } from "react-router-dom";
+import { api } from "../../../api/ApiPosts";
+import { checkToken } from "../../../api/ReCaptchaVerification";
+import { IRootState } from "store/store";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { IPost } from "interface/Interface";
+import ShortPost from "./post/ShortPost";
+import FiltersBar from "./menu/FiltersBar";
+import MobileFilterBtn from "./filtersMobile/MobileFilterBtn";
 import { apiImg } from "../../../api/ApiImg";
 import ShortPostSkeleton from "./post/ShortPostSkeleton";
 import { postsLoadLimit } from "../../../api/ApiPostConfig";
-import { useTranslation } from "react-i18next";
 import Loading from "./Loading";
-import { checkToken } from "../../../api/ReCaptchaVerification";
+import '../../../styles/main/articles-cases.scss';
 
 const ArticlesAndCases = () => {
 
@@ -33,7 +33,6 @@ const ArticlesAndCases = () => {
     const getPosts = async (pageLang: string) => {
         if (window.location.hostname !== `localhost`) {
             const response = await checkToken();
-            console.log(response);
             if (response === `error`) throw new Error(`Something wrong with token request`);
         };
 

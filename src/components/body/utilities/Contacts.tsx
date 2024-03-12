@@ -1,18 +1,18 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import ViberLogo from "../../../components/footer/utilities/ViberLogo";
-import TelegramLogo from "../../../components/footer/utilities/TelegramLogo";
-import WhatsAppLogo from "../../../components/footer/utilities/WhatsAppLogo";
-import '../../../styles/main/contacts.scss';
-import ContactForm from "./contacts/ContactForm";
 import { useSelector } from "react-redux";
 import { IRootState } from "../../../store/store";
+import ContactForm from "./contacts/ContactForm";
 import Loading from "./Loading";
 import ModalNotice from "./contacts/ModalNotice";
+import LinkViber from "../../../components/global/logo-links/LinkViber";
+import LinkTelegram from "../../../components/global/logo-links/LinkTelegram";
+import LinkWhatsApp from "../../../components/global/logo-links/LinkWhatsApp";
+import '../../../styles/main/contacts.scss';
+
 const Contacts = () => {
 
     const { t } = useTranslation();
-
     const deviceType = useSelector<IRootState, string>((state) => state.deviceType.screen);
 
     return(
@@ -31,15 +31,9 @@ const Contacts = () => {
                                 <span>bfchanoff@gmail.com</span>
                             </a>
                             <div className="contacts__social-logos">
-                                <a href="viber://chat?number=%2B3752961019786">
-                                    <ViberLogo/>
-                                </a>
-                                <a href="https://t.me/Aleg_Ch">
-                                    <TelegramLogo/>
-                                </a>                        
-                                <a href="https://wa.me/48505025186">
-                                    <WhatsAppLogo/>
-                                </a>
+                                <LinkViber/>
+                                <LinkTelegram/>
+                                <LinkWhatsApp/>
                             </div>
                         </div>
                     </div>

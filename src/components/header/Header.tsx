@@ -32,7 +32,6 @@ const Header = () => {
     }, []);
 
     return (
-        <React.Suspense fallback={<h1>f</h1>}>
             <>
                 <header className="header">
                     <div className="container">
@@ -51,7 +50,6 @@ const Header = () => {
                 </header>
                 {screen === `mobile` && <MobileMenuContainer/>}
             </>
-        </React.Suspense>
     );
 };
 

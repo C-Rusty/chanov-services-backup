@@ -1,5 +1,3 @@
-@import './global/fonts.scss';
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -8,7 +6,7 @@
 
 html {
     font-size: 62.5% !important;
-    
+
     .container {
         padding: 0 20%;
 
@@ -31,5 +29,35 @@ html {
 
     section {
         padding-bottom: 7.2rem;
+    }
+
+    @font-face {
+        font-family: "PT Sans-Regular";
+        src: url(../fonts/ptSans/PTSans-Regular.ttf);
+    }
+    
+    @font-face {
+        font-family: "PT Sans-Bold";
+        src: url(../fonts/ptSans/PTSans-Bold.ttf);
+    }
+    
+    @font-face {
+        font-family: "Merriweather-Regular";
+        src: url(../fonts/merriweather/Merriweather-Regular.ttf);
+    }
+    
+    @font-face {
+        font-family: "Merriweather-Bold";
+        src: url(../fonts/merriweather/Merriweather-Bold.ttf);
+    }
+    
+    @font-face {
+        font-family: "Georgia-Regular";
+        src: url(../fonts/georgia/georgia.ttf);
+    }
+    
+    @font-face {
+        font-family: "Georgia-BoldItalic";
+        src: url(../fonts/georgia/georgia.ttf);
     }
 }

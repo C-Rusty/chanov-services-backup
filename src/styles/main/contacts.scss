@@ -3,35 +3,6 @@
 @import '../global/fonts-mixins/GeorgiaMix.scss';
 @import '../global/fonts-mixins/PTSansMix.scss';
 
-@mixin telegram-logo {
-    path:first-child {
-        fill: #24A1DE;
-    }
-
-    path {
-        fill: white;
-    }
-}
-
-@mixin viber-logo {
-    path:first-child {
-        fill: white;
-    }
-
-    path {
-        fill: #7360F2;
-    }
-}
-
-@mixin whats-app-logo {
-    circle {
-        fill: white;
-    }
-    path {
-        fill: #25D366;
-    }
-}
-
 .contact-me {
     background: $gray-primary;
 
@@ -166,30 +137,6 @@
                             path, circle {
                                 transition: all .3s;
                             }
-                        }
-                    }
-                }
-
-                a:first-child {
-                    &:hover {
-                        svg {
-                            @include viber-logo;
-                        }
-                    }
-                }
-
-                a:nth-child(2) {
-                    &:hover {
-                        svg {
-                            @include telegram-logo;
-                        }
-                    }
-                }
-
-                a:last-child {
-                    &:hover {
-                        svg {
-                            @include whats-app-logo;
                         }
                     }
                 }
@@ -375,18 +322,6 @@
                             height: auto;
 
                             width: 5.6rem;
-                        }
-
-                        .telegram-logo {
-                            @include telegram-logo;
-                        }
-                        
-                        .viber-logo {
-                            @include viber-logo;
-                        }
-                        
-                        .whats-app-logo {
-                            @include whats-app-logo;
                         }
                     }
                 }

@@ -1,6 +1,6 @@
 import React from "react";
-import '../../../styles/main/no-page.scss';
 import { useTranslation } from "react-i18next";
+import '../../../styles/main/no-page.scss';
 
 const NoPage = () => {
 

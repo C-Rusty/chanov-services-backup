@@ -3,9 +3,9 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { setCategoryTagReducer } from "../../../../store/CategoryTagReducer";
 import { setTypeTagReducer } from "../../../../store/TypeTagReducer";
-import '../../../../styles/main/utilities/FiltersBar.scss';
 import { IRootState } from "../../../../store/store";
 import { setMobileState } from "../../../../store/MenuOpenReducer";
+import '../../../../styles/main/utilities/FiltersBar.scss';
 
 const FiltersBar = () => {
 
@@ -110,9 +110,6 @@ const FiltersBar = () => {
             <nav className="nav-bar">
                 <div className="nav-bar__types">
                     <span>{t (`Type`)}</span>
-                    {/* <input type="file" name="" id=""
-                        onChange={ (e) => handleUpload(e.target.files![0])}
-                    /> */}
                     <ul className="list types-list">
                         <li
                             onClick={(e) => {
@@ -170,7 +167,6 @@ const FiltersBar = () => {
                 <button onClick={handleApplyBtn}>{t (`Apply`)}</button>
             }
         </>
-
     );
 };
 
