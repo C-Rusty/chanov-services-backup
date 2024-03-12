@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { api } from "../../../api/ApiPosts";
-import { checkToken } from "../../../api/ReCaptchaVerification";
+// import { checkToken } from "../../../api/ReCaptchaVerification";
 import { IRootState } from "store/store";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -31,10 +31,10 @@ const ArticlesAndCases = () => {
     const currentLang = i18n.language;
 
     const getPosts = async (pageLang: string) => {
-        if (window.location.hostname !== `localhost`) {
-            const response = await checkToken();
-            if (response === `error`) throw new Error(`Something wrong with token request`);
-        };
+        // if (window.location.hostname !== `localhost`) {
+        //     const response = await checkToken();
+        //     if (response === `error`) throw new Error(`Something wrong with token request`);
+        // };
 
         const postsData: IPost[] | undefined = await api.getShortPosts(pageLang);
 
