@@ -1,3 +1,0 @@
-User-agent: *
-Sitemap: https://http://olegchanov.com/sitemap.xml
-Disallow: /api/

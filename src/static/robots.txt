@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://c-marketing-website.web.app/sitemap.xml
