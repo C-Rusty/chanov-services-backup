@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes} from "react-router-dom";
+import { Route, Routes, json} from "react-router-dom";
 import { api } from "../../api/ApiPosts";
 import Loading from "./utilities/Loading";
 
@@ -12,20 +12,34 @@ const Content = () => {
     const FullPost = React.lazy(() => import('./utilities/post/FullPost'));
     const NoPage = React.lazy(() => import('./utilities/404'));
     
-    const [postsRouteNames, setPostsRouteNames] = useState<Array<string> | []>([]);
+    const [postsRouteNamesState, setPostsRouteNamesState] = useState<Array<string> | []>([]);
 
-    const getPostsRoutes = async () => {
+    const setPostsRoutesFromApi = async () => {
         const response = await api.getPostsUrl();
+        console.log(`POSTS API CALLED`);
         
         if (response) {
-            setPostsRouteNames(response);
+            sessionStorage.setItem(`routes`, JSON.stringify(response));
+            setPostRoutesFromStorage();
         } else {
             throw new Error (`Something wrong with posts API response. Posts API returned value ${response}`);
         };
     };
 
+    const setPostRoutesFromStorage = () => {
+        const storagePostsRoutes = sessionStorage.getItem(`routes`);
+        
+        if (storagePostsRoutes) {
+            setPostsRouteNamesState(JSON.parse(storagePostsRoutes));
+        };
+    };
+
     useEffect(() => {
-        getPostsRoutes();
+        if(!sessionStorage.getItem(`routes`)) {
+            setPostsRoutesFromApi();
+        } else {
+            setPostRoutesFromStorage();
+        };
     }, []);
 
     return(
@@ -34,7 +48,7 @@ const Content = () => {
                 <Route path="/" element={<AboutMe/>}/>
                 <Route path="trainings" element={<Trainings/>}/>
                 <Route path="articles-and-cases" element={<ArticlesAndCases/>}>
-                    {postsRouteNames.map(pathName =>
+                    {postsRouteNamesState.map(pathName =>
                         <Route path={pathName} element={<FullPost/>} key={pathName} />   
                     )}
                 </Route>

@@ -63,7 +63,7 @@ const ContactForm = () => {
 
 
         const data = {
-            service_id: 'service_ms5x63y',
+            service_id: 'service_ms5x35b',
             template_id: 'template_9qfcfhf',
             user_id: '-GnWfbXVoK4IzkfI3',
             template_params: {

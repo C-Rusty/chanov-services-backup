@@ -1,0 +1,10 @@
+.whats-app {
+    &:hover {
+        circle {
+            fill: white;
+        }
+        path {
+            fill: #25D366;
+        }
+    }
+}
