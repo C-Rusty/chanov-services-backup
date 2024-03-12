@@ -31,10 +31,11 @@ const ArticlesAndCases = () => {
     const currentLang = i18n.language;
 
     const getPosts = async (pageLang: string) => {
-        // if (window.location.hostname !== `localhost`) {
-        //     const response = await checkToken();
-        //     if (response === `error`) throw new Error(`Something wrong with token request`);
-        // };
+        if (window.location.hostname !== `localhost`) {
+            const response = await checkToken();
+            console.log(response);
+            if (response === `error`) throw new Error(`Something wrong with token request`);
+        };
 
         const postsData: IPost[] | undefined = await api.getShortPosts(pageLang);
 
@@ -55,16 +56,6 @@ const ArticlesAndCases = () => {
     
     const categoryTag = useSelector<IRootState, string>((state) => state.categoryTag.chosen);
     const typeTag = useSelector<IRootState, string>((state) => state.typeTag.chosen);
-
-    // const handleClickBtn = () => {
-    //     api.createCollection(document.documentElement.lang);
-    // };
-
-    // const handleUpload = (file: File) => {
-    //     if (file) {
-    //         apiImg.uploadImage(file);         
-    //     };
-    // };
 
     const filterPosts = (typeTag: string, categoryTag : string) => {
         let filteredPosts: IPost[] = [];
@@ -119,7 +110,6 @@ const ArticlesAndCases = () => {
         <React.Suspense fallback={<Loading/>}>
             {showAllPosts ?
                 <div className="articles-cases">
-                    {/* <button onClick={handleClickBtn}>Create Post</button> */}
                     <div className="container">
                         {deviceType === `desktop` ? 
                             <FiltersBar/>

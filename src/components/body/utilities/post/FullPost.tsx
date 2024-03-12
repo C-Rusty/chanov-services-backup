@@ -18,10 +18,10 @@ const FullPost = () => {
     const [postContent, setPostContent] = useState<IFullPost | undefined>(undefined);
 
     const getPostContent = async () => {
-        // if (window.location.hostname !== `localhost`) {
-        //     const response = await checkToken();
-        //     if (response === `error`) throw new Error(`Something wrong with token request`);
-        // };
+        if (window.location.hostname !== `localhost`) {
+            const response = await checkToken();
+            if (response === `error`) throw new Error(`Something wrong with token request`);
+        };
         
         const response: IFullPost | undefined = await api.getFullPost(document.documentElement.lang, cloudPath);
         if (response) setPostContent(response);

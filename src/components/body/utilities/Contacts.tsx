@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import ViberLogo from "../../../components/footer/utilities/ViberLogo";
 import TelegramLogo from "../../../components/footer/utilities/TelegramLogo";
