@@ -4,7 +4,8 @@ export interface IPost {
     imageCloudPath: string,
     imageUrl?: string, 
     types: [string],
-    categories: [string]
+    categories: [string],
+    created: number
 }
 
 export interface IImage {

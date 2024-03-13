@@ -1,9 +1,11 @@
 import { initializeApp } from "firebase/app";
-import { collection, doc, setDoc, getDocs, getDoc, query, limit, startAfter, DocumentData  } from "firebase/firestore"; 
+import { collection, doc, setDoc, getDocs, getDoc, query, limit, startAfter, DocumentData, orderBy  } from "firebase/firestore"; 
 import { getFirestore } from "firebase/firestore";
 import collections from "../collections/collections";
 import { IFullPost, IPost, IPostsUrlPath} from "../interface/Interface";
 import { firebaseConfig } from "./dbConfig";
+import { postsLoadLimit, postFieldOrderBy } from "./ApiPostConfig";
+import { log } from "console";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -66,13 +68,13 @@ const getFullPost = async (language: string, postName: string) => {
     throw new Error (`Something wrong. Language is ${language}`);
   };
 
-  const docRef = await doc(db, collectionName, postName);
+  const docRef = doc(db, collectionName, postName);
   const fullPost = (await getDoc(docRef)).data();
   
   return fullPost as IFullPost;
 };
 
-const getShortPosts = async (language: string) => {
+const getShortPosts = async (language: string, postsAmountLoaded: number, lastPostTimestamp: number | null) => {
   let collectionName: string = ``;
 
   if (language === `ru`) {
@@ -82,33 +84,35 @@ const getShortPosts = async (language: string) => {
   } else {
     throw new Error (`Something wrong. Language is ${language}`);
   };
-  
-  try {
-    const querySnapshot = await getDocs(collection(db, collectionName));
 
-    // For limit posts amount requests
-    // const first = query(collection(db, collectionName), limit(7));
-    // const documentSnapshots = await getDocs(first);
+  let posts: IPost[] = [];
 
-    // console.log(`first`, documentSnapshots);
+  if (postsAmountLoaded < 6) {
+      try {
+        const firstQueue = query(collection(db, collectionName), orderBy(postFieldOrderBy), limit(postsLoadLimit));
 
-    // const lastVisible = documentSnapshots.docs[documentSnapshots.docs.length-1];
+        const documentSnapshots = await getDocs(firstQueue);
 
-    // const next = query(collection(db, collectionName), startAfter(lastVisible), limit(7));
-
-    // const docsNext = await getDocs(next); 
-    // console.log(`next`, docsNext);
-
-    const posts: IPost[] = querySnapshot.docs.map(postDoc => {
-      const post = postDoc.data() as IPost;
-      return post;
-    });
-
-    return posts;
-
-  } catch (error) {
-    console.log(error);
+        posts = documentSnapshots.docs.map(postDoc => {
+          return postDoc.data() as IPost;
+        });
+      } catch (error) {
+        throw new Error(`${error}`);
+      };
+  } else {
+      try {
+        const nextQueue = query(collection(db, collectionName), orderBy(postFieldOrderBy), startAfter(lastPostTimestamp), limit(postsLoadLimit));
+    
+        const docsNext = await getDocs(nextQueue); 
+        posts = docsNext.docs.map(postDoc => {
+          return postDoc.data() as IPost;
+        });
+      } catch (error) {
+        throw new Error(`${error}`);
+      };
   };
+
+  return posts;
 };
 
 const getPostsUrl = async () => {

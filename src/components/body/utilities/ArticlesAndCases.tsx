@@ -18,10 +18,9 @@ import '../../../styles/main/articles-cases.scss';
 const ArticlesAndCases = () => {
 
     const [posts, setPosts] = useState<IPost[] | []>([]);
-
     const [initialPosts, setInitialPosts] = useState<IPost[] | []>([]);
-
     const [postsLoaded, setPostsLoaded] = useState<boolean>(false);
+    const [postsAmountLoaded, setPostsAmountLoaded] = useState<number>(6);
 
     const getImg = async (imageCloudPath: string) => {
         return apiImg.downloadImage(imageCloudPath);
@@ -30,27 +29,38 @@ const ArticlesAndCases = () => {
     const { i18n } = useTranslation();
     const currentLang = i18n.language;
 
-    const getPosts = async (pageLang: string) => {
+    const getPosts = async (pageLang: string, isLangChanged: boolean) => {
         // if (window.location.hostname !== `localhost`) {
         //     const response = await checkToken();
         //     if (response === `error`) throw new Error(`Something wrong with token request`);
         // };
 
-        const postsData: IPost[] | undefined = await api.getShortPosts(pageLang);
+        let postsData: IPost[] | undefined = undefined;
+        console.log(`isLangChanged`, isLangChanged);
 
-        if (postsData) {
+        if (!posts.length && !isLangChanged) {
+            postsData = await api.getShortPosts(pageLang, postsAmountLoaded, null);
+
+            for (let post of postsData) {
+                const imgUrl = await getImg(post.imageCloudPath);
+                post.imageUrl = imgUrl;
+            };
+            
+            setPosts(postsData);
+            setInitialPosts(postsData);
+        } else {
+            postsData = await api.getShortPosts(pageLang, postsAmountLoaded, initialPosts[initialPosts.length - 1].created);
+
             for (let post of postsData) {
                 const imgUrl = await getImg(post.imageCloudPath);
                 post.imageUrl = imgUrl;
             };
 
-            setPosts(postsData);
-            setInitialPosts(postsData);
-
-            setPostsLoaded(true);
-        } else {
-            throw new Error (`Something wrong with posts API response. Posts API returned value ${postsData}`);
+            setPosts([...posts, ...postsData]);
+            setInitialPosts([...posts, ...postsData]);
         };
+
+        setPostsLoaded(true);
     };
     
     const categoryTag = useSelector<IRootState, string>((state) => state.categoryTag.chosen);
@@ -84,9 +94,19 @@ const ArticlesAndCases = () => {
         };
     };
 
+    const showMorePosts = () => {
+        setPostsAmountLoaded((oldValue) => oldValue + postsLoadLimit);
+    };
+
     useEffect(() => {
-        if (!currentUrlPath.split(`/`)[2]) getPosts(currentLang);
+        let isLangChanged = true;
+        if (!currentUrlPath.split(`/`)[2]) getPosts(currentLang, isLangChanged);
     }, [currentLang]);
+
+    useEffect(() => {
+        let isLangChanged = false;
+        if (!currentUrlPath.split(`/`)[2]) getPosts(currentLang, isLangChanged);
+    }, [postsAmountLoaded]);
 
     useEffect(() => {
         filterPosts(typeTag, categoryTag);
@@ -121,12 +141,21 @@ const ArticlesAndCases = () => {
                                     {posts.map(post => 
                                         <ShortPost key={post.headline} post={post}/>
                                     )}
+
+                                    <button 
+                                        className="articles-cases-container__load-more-btn"
+                                        onClick={showMorePosts}
+                                    >Show More</button>
                                 </>
                                 :
                                 <>
                                     {Array(postsLoadLimit).fill(true).map((_item, index: number) =>
                                         <ShortPostSkeleton key={index}/>
                                     )}
+                                    <button 
+                                        className="articles-cases-container__load-more-btn"
+                                        disabled={true}
+                                    >Show More</button>
                                 </>  
                             }
                         </div>
