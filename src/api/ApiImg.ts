@@ -45,6 +45,6 @@ const downloadAllImgFromFolder = async (folderName: string) => {
 export const apiImg = {
     uploadImage,
     downloadImage,
-    downloadAllImgFromFolder
+    // downloadAllImgFromFolder
 };
 

@@ -1,61 +1,15 @@
 import { initializeApp } from "firebase/app";
-import { collection, doc, setDoc, getDocs, getDoc, query, limit, startAfter, DocumentData, orderBy  } from "firebase/firestore"; 
+import { collection, doc, getDocs, getDoc, query, limit, startAfter, DocumentData, orderBy  } from "firebase/firestore"; 
 import { getFirestore } from "firebase/firestore";
 import collections from "../collections/collections";
 import { IFullPost, IPost, IPostsUrlPath} from "../interface/Interface";
 import { firebaseConfig } from "./dbConfig";
 import { postsLoadLimit, postFieldOrderBy } from "./ApiPostConfig";
-import { log } from "console";
+import { pageActionsEvents } from "../types/types";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const createCollection = async (pageLang: string) => {
-  let collectionName: string = ``;
-
-  if (pageLang === `ru`) {
-    collectionName = collections.postsRuShort;
-  } else if (pageLang === `en`) {
-    collectionName = collections.postsEnShort;
-  } else {
-    throw new Error (`Something wrong. Language is ${pageLang}`);
-  };
-
-    try {
-        await setDoc(doc(db, collectionName, `Strategy-porter`), {
-          types: [`Case`],
-          categories: [`Marketing`, `Strategy`],
-          imageCloudPath: `posts/kia-strategy.webp`,
-          headline: `Strategy development in the “Hard” approach: how Porter’s 5 Forces Model is used`,
-          
-        });  
-    } catch (error) {
-        console.log(error);
-    };
-};
-
-const createCollectionPostsFull = async (pageLang: string, link: string) => {
-  let collectionName: string = ``;
-
-  if (pageLang === `ru`) {
-    collectionName = `posts-ru-full`;
-  } else if (pageLang === `en`) {
-    collectionName = `posts-en-full`;
-  } else {
-    throw new Error (`Something wrong. Language is ${pageLang}`);
-  };
-
-    try {
-        await setDoc(doc(db, collectionName, link), {
-          headline: `Strategy development in the “Hard” approach: how Porter’s 5 Forces Model is used`,
-          types: [`Article`],
-          categories: [`Marketing`],
-          imageCloudPath: `posts/Strategy-porter.webp` 
-        });  
-    } catch (error) {
-        console.log(error);
-    };
-};
 
 const getFullPost = async (language: string, postName: string) => {
   let collectionName: string = ``;
@@ -74,7 +28,7 @@ const getFullPost = async (language: string, postName: string) => {
   return fullPost as IFullPost;
 };
 
-const getShortPosts = async (language: string, postsAmountLoaded: number, lastPostTimestamp: number | null) => {
+const getShortPosts = async (language: string, postsAmountLoaded: number, lastPostTimestamp: number | null, pageEvent: pageActionsEvents) => {
   let collectionName: string = ``;
 
   if (language === `ru`) {
@@ -87,32 +41,63 @@ const getShortPosts = async (language: string, postsAmountLoaded: number, lastPo
 
   let posts: IPost[] = [];
 
-  if (postsAmountLoaded < 6) {
-      try {
-        const firstQueue = query(collection(db, collectionName), orderBy(postFieldOrderBy), limit(postsLoadLimit));
+    switch (pageEvent) {
 
-        const documentSnapshots = await getDocs(firstQueue);
+      case `initial-load`:
+        try {
+          const firstQueue = query(collection(db, collectionName), orderBy(postFieldOrderBy), limit(postsLoadLimit));
+  
+          const documentSnapshots = await getDocs(firstQueue);
+  
+          posts = documentSnapshots.docs.map(postDoc => {
+            return postDoc.data() as IPost;
+          });
+        } catch (error) {
+          throw new Error(`${error}`);
+        };
 
-        posts = documentSnapshots.docs.map(postDoc => {
-          return postDoc.data() as IPost;
-        });
-      } catch (error) {
-        throw new Error(`${error}`);
-      };
-  } else {
-      try {
-        const nextQueue = query(collection(db, collectionName), orderBy(postFieldOrderBy), startAfter(lastPostTimestamp), limit(postsLoadLimit));
+      break;
+
+      case `load-more`:
+
+        try {
+          const nextQueue = query(collection(db, collectionName), orderBy(postFieldOrderBy), startAfter(lastPostTimestamp), limit(postsLoadLimit));
+      
+          const docsNext = await getDocs(nextQueue); 
+          posts = docsNext.docs.map(postDoc => {
+            return postDoc.data() as IPost;
+          });
+
+        } catch (error) {
+          throw new Error(`${error}`);
+        };
     
-        const docsNext = await getDocs(nextQueue); 
-        posts = docsNext.docs.map(postDoc => {
-          return postDoc.data() as IPost;
-        });
-      } catch (error) {
-        throw new Error(`${error}`);
-      };
-  };
+      break;
 
-  return posts;
+      case `lang-changed`:
+
+        try {
+          const queue = query(collection(db, collectionName), orderBy(postFieldOrderBy), limit(postsAmountLoaded));
+
+          const documentSnapshots = await getDocs(queue);
+
+          posts = documentSnapshots.docs.map(postDoc => {
+            return postDoc.data() as IPost;
+          });
+        } catch (error) {
+          throw new Error(`${error}`);
+        };
+
+      break;
+
+      default: throw new Error(`something wrong with page event value. The value: ${pageEvent}`);
+    };
+
+    if (posts.length < postsLoadLimit) {
+      return {posts: posts, isAllPostsLoaded: true};
+    } else {
+      return {posts: posts, isAllPostsLoaded: false};
+    };
 };
 
 const getPostsUrl = async () => {
@@ -128,5 +113,4 @@ export const api = {
   getShortPosts,
   getFullPost,
   getPostsUrl
-  // createCollection
 }
