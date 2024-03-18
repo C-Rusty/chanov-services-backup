@@ -1,1 +1,2 @@
-export const postsLoadLimit: number = 6;
+export const postsLoadLimit: number = 5;
+export const postFieldOrderBy: string = `created`;

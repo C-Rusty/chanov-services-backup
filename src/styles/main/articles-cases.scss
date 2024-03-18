@@ -102,6 +102,11 @@
                 flex-direction: column;
                 flex-wrap: nowrap;
             }
+
+            &__load-more-btn {
+                width: 100%;
+                @include button;
+            }
         }
     }
 }

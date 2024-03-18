@@ -1,3 +1,8 @@
-export type ITypeTag = `All` | `Articles` | `Cases`;
+import { IPost } from "../interface/Interface";
 
-export type ICategoryTag = `All` | `Marketing` | `Strategy`;
+export type pageActionsEvents = `initial-load` | `load-more` | `lang-changed` | undefined;
+
+export type PostsResponse = {
+    posts: IPost[], 
+    isAllPostsLoaded: boolean
+};
