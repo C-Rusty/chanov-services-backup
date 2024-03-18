@@ -11,7 +11,7 @@ module.exports = {
     entry: `./src/index.tsx`,
     output: {
         filename: `[name].[chunkhash:8].js`,
-        path: path.resolve(__dirname, `..`, `/public/`),
+        path: path.resolve(__dirname, `..`, `public`),
         publicPath: '/',
     },
     resolve: {
