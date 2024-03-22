@@ -16,7 +16,6 @@ const Content = () => {
 
     const setPostsRoutesFromApi = async () => {
         const response = await api.getPostsUrl();
-        console.log(`POSTS API CALLED`);
         
         if (response) {
             sessionStorage.setItem(`routes`, JSON.stringify(response));
@@ -35,7 +34,8 @@ const Content = () => {
     };
 
     useEffect(() => {
-        if(!sessionStorage.getItem(`routes`)) {
+        const routes = sessionStorage.getItem(`routes`); 
+        if(!routes) {
             setPostsRoutesFromApi();
         } else {
             setPostRoutesFromStorage();

@@ -13,17 +13,21 @@ import { postsLoadLimit } from "../../../api/ApiPostConfig";
 import Loading from "./Loading";
 import '../../../styles/main/articles-cases.scss';
 import { PostsResponse, pageActionsEvents } from "../../../types/types";
+import { useDispatch } from "react-redux";
+import { setPostsLoadStatus } from "../../../store/PostsLoadReducer";
 
 const ArticlesAndCases = () => {
 
     const [posts, setPosts] = useState<IPost[] | []>([]);
     const [initialPosts, setInitialPosts] = useState<IPost[] | []>([]);
-    const [postsLoaded, setPostsLoaded] = useState<boolean>(false);
     const [postsAmountLoaded, setPostsAmountLoaded] = useState<number>(5);
     const [isAllPostsLoaded, setIsAllPostsLoaded] = useState<boolean>(false);
 
     const { i18n } = useTranslation();
     const currentLang = i18n.language;
+
+    const dispatch = useDispatch();
+    const postsLoadStatus = useSelector<IRootState, boolean>((state) => state.postsLoadReducer.isLoaded);
 
     const handlePageActions = async (pageLang: string, isLangChanged: boolean) => {
         let pageEvent: pageActionsEvents = undefined;
@@ -58,7 +62,7 @@ const ArticlesAndCases = () => {
                 throw Error (`something wrong with pageEvent in handlePageActions. The value is ${pageEvent}`);
             };
 
-            setPostsLoaded(true);
+            dispatch(setPostsLoadStatus(true));
         } else {
             throw new Error (`something wrong with postsData. The value is:  ${postsData}`);
         };
@@ -153,10 +157,13 @@ const ArticlesAndCases = () => {
                             <MobileFilterBtn/>
                         }
                         <div className="articles-cases-container">
-                            {postsLoaded ?
+                            {postsLoadStatus ?
                                 <>
                                     {posts.map(post => 
-                                        <ShortPost key={post.headline} post={post}/>
+                                        <ShortPost 
+                                            key={post.headline}
+                                            post={post} 
+                                        />
                                     )}
 
                                     {!isAllPostsLoaded &&

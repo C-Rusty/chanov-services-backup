@@ -170,6 +170,10 @@
                     margin-bottom: .8rem;
                 }
 
+                img:has(:not(p)) {
+                    margin-bottom: 4rem;
+                }
+
                 .text {
                     @include Georgia-18px;
                     color: $black-secondary;
@@ -180,6 +184,26 @@
 
                     &__link {
                         color: $black-secondary;
+                    }
+                }
+            }
+
+            .swiper {
+                &:hover {
+                    cursor: pointer;
+                }
+
+                .swiper-wrapper {
+                    padding-bottom: 4rem;
+                                    
+                    img {
+                        margin-bottom: 0;
+                    }
+                }
+
+                .swiper-pagination {
+                    .swiper-pagination-bullet {
+                        background: $black-secondary;
                     }
                 }
             }
@@ -213,9 +237,8 @@
                     }
                 }
             
-                .text, .italic, .bold-text  {
+                .text, .italic, .bold-text, .block  {
                     @include Georgia-18px;
-                    text-align: justify;
                     color: $black-secondary;
 
                     @media screen and (max-width: 768px) {
@@ -231,6 +254,13 @@
                     &__link {
                         text-decoration: underline;
                         color: $black-secondary;
+
+                        transition: .2s all;
+
+                        &:hover {
+                            color: $accent-hover;
+                            transition: .2s all;
+                        }
                     }
                     &__bold {
                         font-weight: 700;
@@ -258,6 +288,10 @@
                             @include textMobile-16px;
                         }
                     }
+                }
+
+                ul:has(.numeric) {
+                    list-style-type: numeric;
                 }
 
                 .italic {
@@ -288,6 +322,11 @@
                         }
                     }
                 }
+            }
+
+            .block {
+                display: block;
+                margin-bottom: .8rem;
             }
 
             &__text-block:last-child {
