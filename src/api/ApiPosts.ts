@@ -10,7 +10,6 @@ import { pageActionsEvents } from "../types/types";
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-
 const getFullPost = async (language: string, postName: string) => {
   let collectionName: string = ``;
 

@@ -7,6 +7,7 @@ import DeviceTypeReducer from "./DeviceTypeReducer";
 import FormSendReducer from "./FormSendReducer";
 import ModalLegalReducer from "./ModalLegalReducer";
 import MobilePositionReducer from "./MobileMenuPositionReducer";
+import postsLoadReducer from "./PostsLoadReducer";
 
 const store = configureStore({
     reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
         formReducer: FormSendReducer,
         modalLegalReducer: ModalLegalReducer,
         mobilePositionReducer: MobilePositionReducer,
+        postsLoadReducer: postsLoadReducer
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
