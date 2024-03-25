@@ -10,6 +10,15 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import { createRoot } from 'react-dom/client';
 
+const Header = React.lazy(() => import('./components/header/Header'));
+const Content = React.lazy(() => import('./components/body/Content'));
+const LegalDocsModal = React.lazy(() => import('./components/footer/utilities/Legal'));
+const Footer = React.lazy(() => import('./components/footer/Footer'));
+
+const selectedLang = document.cookie.split(`=`)[1];
+
+const pageLang = selectedLang ? selectedLang : `en`;
+
 i18next.init({
     interpolation: {escapeValue: false}
 });
@@ -23,11 +32,9 @@ const resources  = {
     }
 };
 
-const browserLang = navigator.language.split(`-`)[0];
-
 i18n.use(initReactI18next).init({
     resources,
-    lng: browserLang,
+    lng: pageLang,
     fallbackLng: `en`,
     interpolation: {
         escapeValue: false
@@ -37,11 +44,6 @@ i18n.use(initReactI18next).init({
 i18next.on('languageChanged', (lng) => {
     document.documentElement.setAttribute('lang', lng);
 });
-
-const Header = React.lazy(() => import('./components/header/Header'));
-const Content = React.lazy(() => import('./components/body/Content'));
-const LegalDocsModal = React.lazy(() => import('./components/footer/utilities/Legal'));
-const Footer = React.lazy(() => import('./components/footer/Footer'));
 
 const App = () => {
     

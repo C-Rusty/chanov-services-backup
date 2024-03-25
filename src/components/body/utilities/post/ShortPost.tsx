@@ -15,7 +15,7 @@ const ShortPost = ({post} : {post: IPost}) => {
     const deviceType = useSelector<IRootState, string>(state => state.deviceType.screen);
 
     return (
-        <Link to={postUrlPath} className="post-short">
+        <a href={`/articles-and-cases/` + postUrlPath} className="post-short">
             <div className="post-short__img">
                 <img loading="lazy" src={post.imageUrl} alt={postUrlPath} />
                 {deviceType === `desktop` &&
@@ -35,7 +35,7 @@ const ShortPost = ({post} : {post: IPost}) => {
                     )}
                 </div>
             </div>
-        </Link>
+        </a>
     );
 };
 

@@ -11,6 +11,7 @@ const FiltersBar = () => {
 
     const typeTagReducer = useSelector<IRootState, string>((state) => state.typeTag.chosen);
     const typeCategoryReducer = useSelector<IRootState, string>((state) => state.categoryTag.chosen);
+
     const deviceType = useSelector<IRootState, string>((state) => state.deviceType.screen);
     
     const dispatch = useDispatch();

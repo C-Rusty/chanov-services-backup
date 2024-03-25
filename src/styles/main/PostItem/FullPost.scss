@@ -3,6 +3,18 @@
 @import '../../global/fonts-mixins/GeorgiaMix.scss';
 @import '../../global/fonts-mixins/MerriweatherMix.scss';
 
+@mixin link {
+    text-decoration: underline;
+    color: $black-secondary;
+
+    transition: .2s all;
+
+    &:hover {
+        color: $accent-hover;
+        transition: .2s all;
+    }
+}
+
 .post-full {
     background: $gray-primary;
 
@@ -208,7 +220,7 @@
                 }
             }
 
-            &__text-block {
+            &__text-block, div.text {
                 $elements-gap: 1.6rem;
 
                 margin-bottom: 4rem;
@@ -237,7 +249,7 @@
                     }
                 }
             
-                .text, .italic, .bold-text, .block  {
+                .text, .italic, .bold-text, .block, .link  {
                     @include Georgia-18px;
                     color: $black-secondary;
 
@@ -246,21 +258,13 @@
                     }
                 }
 
-                .bold-text {
+                .bold-text, .bold {
                     font-weight: 700;
                 }
 
                 .text {
                     &__link {
-                        text-decoration: underline;
-                        color: $black-secondary;
-
-                        transition: .2s all;
-
-                        &:hover {
-                            color: $accent-hover;
-                            transition: .2s all;
-                        }
+                        @include link;
                     }
                     &__bold {
                         font-weight: 700;
@@ -281,12 +285,16 @@
                 ul {
                     padding-left: 2rem;
 
-                    li {
+                    li, span {
                         @include Georgia-18px;
 
                         @media screen and (max-width: 768px) {
                             @include textMobile-16px;
                         }
+                    }
+
+                    span {
+                        margin-bottom: 0.4rem;
                     }
                 }
 
@@ -320,8 +328,18 @@
                             margin-left: 1.8rem;
                             padding-left: 3.2rem;
                         }
+
+                        .link {
+                            @include link;
+                            @include Georgia-18px-BoldItalic;
+                            font-weight: bold;
+                        }
                     }
                 }
+            }
+
+            div.text {
+                margin-bottom: 0;
             }
 
             .block {

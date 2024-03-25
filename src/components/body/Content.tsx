@@ -35,6 +35,7 @@ const Content = () => {
 
     useEffect(() => {
         const routes = sessionStorage.getItem(`routes`); 
+        
         if(!routes) {
             setPostsRoutesFromApi();
         } else {

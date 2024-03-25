@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import '../../../../styles/main/PostItem/FullPost.scss';
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import ArrowBack from "../../../../images/content/articles-cases/ArrowBack";
 import { api } from "../../../../api/ApiPosts";
 import { IFullPost } from "interface/Interface";
@@ -88,10 +88,10 @@ const FullPost = () => {
                 <div className="container">
                     <div className="head">
                         <div className="head__back-btn">
-                            <Link to="/articles-and-cases">
+                            <a href="/articles-and-cases">
                                 <ArrowBack/>
                                 {t (`Back to list`)}
-                            </Link>
+                            </a>
                         </div>
                         <div className="head__tags">
                             {postContent?.categories.map(category => 
