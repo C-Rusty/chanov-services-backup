@@ -5,9 +5,9 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import '../../../styles/head/header-utilities/LangSwitcher.scss';
 import { FormControl} from "@mui/material";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { IRootState } from "../../../store/store";
-import { useDispatch } from "react-redux";
+import {  } from "react-redux";
 import { setMobileState } from "../../../store/MenuOpenReducer";
 
 const LangSwitcher = () => {
@@ -19,12 +19,12 @@ const LangSwitcher = () => {
     const deviceType = useSelector<IRootState, string>((state) => state.deviceType.screen);
     
     const handleLangSwitch = (e: {target: { value: string; }} ) => {
-        const newLang = e.target.value;
-        i18n.changeLanguage(newLang);
+        const selectedLang = e.target.value;
+        setPageLang(selectedLang);
     };
 
     const handleMobileTap = (selectedLang: string, e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
-        i18n.changeLanguage(selectedLang);
+        setPageLang(selectedLang);
 
         const currentActiveItem = document.querySelector(`.active-lang`);
         currentActiveItem?.classList.remove(`active-lang`);
@@ -33,6 +33,21 @@ const LangSwitcher = () => {
         document.getElementById(`${navItemClicked.id}`)?.classList.add(`active-lang`);
 
         dispatch(setMobileState(false));
+    };
+
+    const setPageLang = (selectedLang: string) => {
+        i18n.changeLanguage(selectedLang);
+        sessionStorage.setItem(`lang`, JSON.stringify(selectedLang));
+        setPreferredLangCookie(selectedLang);
+    };
+
+    const setPreferredLangCookie = (selectedLang: string) => {
+        const now: Date = new Date();
+        const weekInMs: number = 604800 * 1000;
+        const expireTime: number = now.getTime() + weekInMs;
+        now.setTime(expireTime);
+
+        document.cookie = `lang=${selectedLang};expires=${now}`;
     };
 
     const handleSelectOpen = () => {
