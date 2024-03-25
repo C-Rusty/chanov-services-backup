@@ -15,7 +15,8 @@ const Content = React.lazy(() => import('./components/body/Content'));
 const LegalDocsModal = React.lazy(() => import('./components/footer/utilities/Legal'));
 const Footer = React.lazy(() => import('./components/footer/Footer'));
 
-const selectedLang = document.cookie.split(`=`)[1];
+const langOptions = /\b(?:ru|en)\b/g;
+const selectedLang: string | null = document.cookie.match(langOptions)![0];
 
 const pageLang = selectedLang ? selectedLang : `en`;
 
