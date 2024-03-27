@@ -15,10 +15,18 @@ const Content = React.lazy(() => import('./components/body/Content'));
 const LegalDocsModal = React.lazy(() => import('./components/footer/utilities/Legal'));
 const Footer = React.lazy(() => import('./components/footer/Footer'));
 
-const langOptions = /\b(?:ru|en)\b/g;
-const selectedLang: string | null = document.cookie.match(langOptions)![0];
+const setPageLang = () => {
+    const langOptions = /\b(?:ru|en)\b/g;
+    const allCookies = document.cookie; 
+    
+    if (allCookies.match(langOptions)) {
+        return document.cookie.match(langOptions)![0];
+    } else  {
+        return `en`;
+    };
+};
 
-const pageLang = selectedLang ? selectedLang : `en`;
+const pageLang = setPageLang();
 
 i18next.init({
     interpolation: {escapeValue: false}
